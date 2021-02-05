@@ -1,0 +1,38 @@
+.side-nav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+
+    .side-nav-header{
+        font-size: 30px;
+        font-family: $font-Bold;
+    }
+    .side-nav-item{
+        
+        &::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 7px;
+            background-color: $white;
+            opacity: 0;
+            transform: scaleY(0);
+          }
+          &:hover{
+            background-color: #355468;
+            &::before{
+              opacity: 1;
+              transform: scaleY(1);
+              transition: transform 0.3s, opacity 0.3s;
+            }
+        }
+    }
+}
