@@ -1,10 +1,15 @@
 
+@import "~bootstrap/scss/bootstrap";
+
 // fonts
 @import 'Font-loader';
+
+//variables
+@import 'variables';
+
 
 //Side bar 
 @import 'Navs/sidebar';
 
 
-//variables
-@import 'variables';
+
