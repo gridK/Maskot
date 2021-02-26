@@ -1,38 +1,85 @@
 .side-nav {
     height: 100%;
-    width: 160px;
+    width: 18%;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color:#273E4D;
     overflow-x: hidden;
-    padding-top: 20px;
-
+    padding-top: 3.7%;
+    
+    color:$white;
     .side-nav-header{
-        font-size: 30px;
+        font-size: 2.5vw;
         font-family: $font-Bold;
+        padding-left: 20%;
+        margin-bottom: 24%;
     }
+
     .side-nav-item{
-        
-        &::before{
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 7px;
-            background-color: $white;
-            opacity: 0;
-            transform: scaleY(0);
-          }
-          &:hover{
-            background-color: #355468;
-            &::before{
-              opacity: 1;
-              transform: scaleY(1);
-              transition: transform 0.3s, opacity 0.3s;
-            }
+      display: flex;
+      padding-left: 20%;
+      text-align: center;
+      .side-nav-item-icon{
+        margin: 1.1vw 0vw 1.1vw 0vw;
+        height: 1.3vw;
+        width: 1.3vw;
+      }
+      .side-nav-item-text{
+        margin: 0.8vw 1vw 1.1vw 1vw;
+        font-family: $font-Medium;
+        font-size: 1.5vw;
+        vertical-align: middle;
+
+      }
+      &::before{
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 7px;
+          background-color: $white;
+          opacity: 0;
+          transform: scaleY(0);
         }
+        &:hover{
+          background-color: #355468;
+          &::before{
+            opacity: 1;
+            transform: scaleY(1);
+            transition: transform 0.3s, opacity 0.3s;
+          }
+
+        }
+        &.active{
+          background-color: #355468;
+          &::before{
+            opacity: 1;
+            transform: scaleY(1);
+            transition: transform 0.3s, opacity 0.3s;
+          }
+        }
+
+    }
+
+    @media screen and (max-width: 700px) {
+      .side-nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+        a {
+          float: left;
+        }
+      }
+      div.content {margin-left: 0;}
+    }
+    
+    @media screen and (max-width: 400px) {
+      .sidebar a {
+        text-align: center;
+        float: none;
+      }
     }
 }
