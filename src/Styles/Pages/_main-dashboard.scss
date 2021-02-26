@@ -1,0 +1,56 @@
+.main-title{
+    font-size: 3.15rem;
+    font-family: $font-Bold;
+    margin-bottom: 0;
+}
+
+.main-sub-title{
+    font-size: 1.6rem;
+    font-family: $font-Medium;
+    margin-top: 10px;
+    color: #355468;
+}
+.main-item-icon{
+    height: 2rem;
+    width: 2rem;
+}
+
+.main-date-text{
+    padding-left: 3%;
+    h5{
+        margin-left: 10px;
+        font-size: 1.55rem;
+        margin-bottom: 0;
+    }
+}
+
+.main-inspection-record-view{
+    padding-left: inherit;
+    margin-top: 71px;
+    .mini-view-btn{
+        margin-left: 15px;
+    }
+}
+.main-daily-location-inspection-scroll-view{
+    overflow-y: scroll;
+}
+
+.main-description-text{
+    color: #B9B9B9;
+    font-size: 1.1rem;
+    font-family: $font-Medium;
+}
+@media only screen and(min-width: 1300px){
+    .col-xxl-7 {
+        flex: 0 0 58.333333% !important;
+        max-width: 58.333333% !important;
+    }
+    .col-xxl-5 {
+        flex: 0 0 41.666667% !important;
+        max-width: 41.666667% !important;
+    }
+}
+
+.main-temp-margin{
+    margin-top: 327px;
+}

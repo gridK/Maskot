@@ -11,5 +11,11 @@
 //Side bar 
 @import 'Navs/sidebar';
 
+// Pages
+@import 'Pages/layout';
+@import 'Pages/main-dashboard';
 
 
+// Utilities
+@import 'Utilities/mini-card';
+@import 'Utilities/full-width-card';

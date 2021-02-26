@@ -1,22 +1,27 @@
+import React, { useState} from 'react';
 import './Styles/maskot-styling.scss';
 import SideNav from './Components/SideNav';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import MainDashBoard from './Components/Pages/MainDashboard';
+
+
+
+
+
 
 function App(){
+    const [page, navigate] = useState(1)
+
+    function Navigation(num) {
+        navigate(num)
+    }
+
     return (
-        <Container>
-            <Row>
-                <Col lg="4">
-                    <SideNav />
-                </Col>
-                <Col lg="8">
-                    <SideNav />
-                </Col>
-            </Row>
-        </Container>
+        <div class="page-layout">
+            <SideNav />
+            { page === 1 ? <MainDashBoard /> : null }
+        </div>
     );
 }
 
