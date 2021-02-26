@@ -21,10 +21,10 @@ function MainDashBoard() {
                 </Col>
                 <Col className="col-xxl-5" xl="6" lg="5" md="4">
                     <Row>
-                        <Col md="auto">
+                        <Col md="6">
                             <MiniCard  label="Total With Mask" value="27,500" icon="/img/icons8-protection-mask-128.svg" iconUnit="/img/icons8-person-64.svg"/> 
                         </Col>
-                        <Col md="auto">
+                        <Col md="6">
                             <MiniCard label="Total Without Mask" value="2,850" icon="/img/icons8-protection-mask-128.svg" iconUnit="/img/icons8-person-64.svg"/> 
                         </Col>
                     </Row>

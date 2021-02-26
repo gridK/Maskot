@@ -4,6 +4,7 @@ import SideNav from './Components/SideNav';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import MainDashBoard from './Components/Pages/MainDashboard';
+import DayReport from './Components/Pages/DayReport';
 
 
 
@@ -20,7 +21,7 @@ function App(){
     return (
         <div class="page-layout">
             <SideNav />
-            { page === 1 ? <MainDashBoard /> : null }
+            { page === 1 ? <DayReport /> : null }
         </div>
     );
 }
