@@ -31,8 +31,18 @@
         margin-left: 15px;
     }
 }
-.main-daily-location-inspection-scroll-view{
+.scrollable-view{
     overflow-y: scroll;
+    overflow-x: auto;
+    height: max-content;
+    ::-webkit-scrollbar {
+        display: none;
+    }
+}
+.position-fixed{
+    position: fixed;
+    width: 100%;
+    z-index: 1;
 }
 
 .main-description-text{

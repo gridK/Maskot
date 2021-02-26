@@ -12,8 +12,10 @@ function FullWidthCard(props) {
                 <Col className="full-width-card-partial" xl="3">
                     <div className="mini-card-text-big">
                         <p>{props.label_A}</p>
-                        <Row className="mini-card-value-text">
-                            <h2>{props.value_A}</h2>
+                        <Row className="mini-card-value-text" >
+                            <Col  lg="auto">
+                                <h2>{props.value_A}</h2>
+                            </Col>
                         </Row>
                         
                     </div>
@@ -23,9 +25,13 @@ function FullWidthCard(props) {
                         <img src={props.icon} className="mini-card-icon"></img>
                         <div className="mini-card-text">
                             <p>{props.label_B}</p>
-                            <Row className="mini-card-value-text">
-                                <h4>{props.value_B}</h4>
-                                <img src={props.iconUnit} ></img>
+                            <Row className="mini-card-value-text" noGutters="true">
+                                <Col  lg="auto">
+                                    <h4>{props.value_B}</h4>
+                                </Col>
+                                <Col>
+                                    <img src={props.iconUnit} ></img>
+                                </Col>
                             </Row>
                             
                         </div>
@@ -36,9 +42,13 @@ function FullWidthCard(props) {
                         <img src={props.icon} className="mini-card-icon"></img>
                         <div className="mini-card-text">
                             <p>{props.label_C}</p>
-                            <Row className="mini-card-value-text">
-                                <h4>{props.value_C}</h4>
-                                <img src={props.iconUnit} ></img>
+                            <Row className="mini-card-value-text" noGutters="true">
+                                <Col  lg="auto" >
+                                    <h4>{props.value_C}</h4>
+                                </Col>
+                                <Col  >
+                                    <img src={props.iconUnit} className="align-self-start" ></img>
+                                </Col>
                             </Row>
                         </div>
                     </Row>
@@ -46,8 +56,10 @@ function FullWidthCard(props) {
                 <Col className="">
                     <div className="mini-card-text">
                         <p>{props.label_D}</p>
-                        <Row className="mini-card-value-text">
-                            <h4>{props.value_D}</h4>
+                        <Row className="mini-card-value-text" noGutters="true">
+                            <Col  lg="auto">
+                                <h4>{props.value_D}</h4>
+                            </Col>
                         </Row>
                         
                     </div>
