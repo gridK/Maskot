@@ -12,7 +12,7 @@ function MiniCard(props) {
                 <div className="mini-card-text ">
                     <p>{props.label}</p>
                     <Row className="mini-card-value-text" noGutters="true">
-                        <Col  lg="9">
+                        <Col  lg="auto">
                             <h4>{props.value}</h4>
                         </Col>
                         <Col >
