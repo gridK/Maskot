@@ -1,0 +1,33 @@
+.view-bread-position-fixed{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-left: 21.2vw !important;
+    padding-top: 1.5% !important;
+    padding-right: 1.5vw !important;
+    z-index: 1;
+    background-color: white;
+    .breadcrumb{
+        background-color: white;
+        padding-left: 0;
+        .breadcrumb-item{
+            font-size: 1.4vw;
+            color: #B9B9B9;
+            font-family: $font-SemiBold ;
+            
+        }
+        .active{
+            color:#273E4D !important;
+        }
+        .breadcrumb-item + .breadcrumb-item::before {
+            content: ">";
+            color: #B9B9B9;
+        }
+    }
+    
+}
+
+.view-filter-group{
+    margin-top: 5%;
+}

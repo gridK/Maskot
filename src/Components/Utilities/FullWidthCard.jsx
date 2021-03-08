@@ -7,7 +7,7 @@ import MiniViewBtn from '../Utilities/MiniViewBtn';
 
 function FullWidthCard(props) {
     return(
-        <div className="full-width-card-box ">
+        <div className="full-width-card-box mt-3">
             <Row className="full-width-card-inner-padding">
                 <Col className="full-width-card-partial" xl="3">
                     <div className="mini-card-text-big">
@@ -65,7 +65,7 @@ function FullWidthCard(props) {
                     </div>
                 </Col>
                 <Col className="full-width-card-partial justify-content-center">
-                    <MiniViewBtn />
+                    <MiniViewBtn  type="view"/>
                 </Col>
             </Row>
         </div>

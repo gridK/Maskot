@@ -36,13 +36,20 @@
     }
 }
 
-.mini-view-btn{
+.mini-btn{
     border-radius: 10px;
     background-color: #355468;
-    padding: 8px 10px 7px 13px;
-    width: 4.8rem;
-    height: 2.3rem;
     display: flex;
+    &.view-btn{
+        padding: 8px 10px 7px 13px;
+        width: 4.8rem;
+        height: 2.3rem;
+    }
+    &.search-btn{
+        padding: 13px 26px 12px 26px;
+        width: 6rem;
+        height: 2.6rem;
+    }
     h5{
         padding-top: 5%;
         font-family: $font-SemiBold;
