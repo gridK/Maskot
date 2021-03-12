@@ -15,9 +15,11 @@
 @import 'Pages/layout';
 @import 'Pages/main-dashboard';
 @import 'Pages/day-report';
+@import 'Pages/inspection-records';
 
 
 // Utilities
 @import 'Utilities/mini-card';
 @import 'Utilities/full-width-card';
 @import 'Utilities/detection-result-card'
+@import 'Utilities/filter-drop-down';

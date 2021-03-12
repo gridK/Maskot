@@ -7,22 +7,47 @@ import MainDashBoard from './Components/Pages/MainDashboard';
 import DayReport from './Components/Pages/DayReport';
 
 
+import InspectionRecords from './Components/Pages/InpectionRecords';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 
 
 
 function App(){
-    const [page, navigate] = useState(1)
+    const [page, navigate] = useState(2)
 
-    function Navigation(num) {
-        navigate(num)
-    }
 
     return (
-        <div class="page-layout">
-            <SideNav />
-            { page === 1 ? <DayReport /> : null }
-        </div>
+        <Router>
+            <div class="page-layout">
+                <SideNav />
+                <Switch>
+                <Route path="/main">
+                    <MainDashBoard /> 
+                </Route>
+                <Route path="/inspection">
+                    <InspectionRecords /> 
+                </Route>
+                <Route path="/timeline">
+
+                </Route>
+                <Route path="/setting">
+
+                </Route>
+                <Route path="/temi">
+
+                </Route>
+                <Route path="/">
+                    <MainDashBoard /> 
+                </Route>
+                </Switch>
+            </div>
+        </Router>
     );
 }
 

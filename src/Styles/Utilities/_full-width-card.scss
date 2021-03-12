@@ -1,7 +1,7 @@
 .full-width-card-box{
     border-radius: 10px;
     border: 1px solid #DDDDDD;
-    padding: 1.3rem 0.7rem 1.3rem 0.7rem;
+    padding: 1.4rem 0.7rem 1.3rem 0.7rem;
     width: 100%;
     height: 6.25rem;
     .full-width-card-inner-padding{
@@ -26,7 +26,6 @@
             font-size: 15px;
         }
         .mini-card-value-text{
-            padding-left: 8%;
             h2{
                 font-family: $font-SemiBold;
                 font-size: 25px;
@@ -43,7 +42,6 @@
             font-size: 15px;
         }
         .mini-card-value-text{
-            padding-left: 11%;
             h2{
                 font-family: $font-SemiBold;
                 font-size: 25px;
@@ -54,9 +52,10 @@
                 color:#273E4D;
             }
             img{
+                margin-top: 1px;
                 margin-left: 2px;
-                width: 23px;
-                height: 23px;
+                width: 18px;
+                height: 18px;
             }
         }
 
@@ -64,7 +63,7 @@
     @media (min-width: 1200px){
         .col-xl-2-5 {
             flex: 0 0 20%;
-            max-width: 20%;
+            max-width: 27%;
         }
     }
 }

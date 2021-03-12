@@ -2,7 +2,7 @@
     height: 100%;
     width: 18%;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     top: 0;
     left: 0;
     background-color:#273E4D;
@@ -21,6 +21,7 @@
       display: flex;
       padding-left: 20%;
       text-align: center;
+      position: relative;
       .side-nav-item-icon{
         margin: 1.1vw 0vw 1.1vw 0vw;
         height: 1.3vw;
@@ -31,36 +32,37 @@
         font-family: $font-Medium;
         font-size: 1.5vw;
         vertical-align: middle;
+        color:$white !important;
 
       }
       &::before{
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 100%;
-          width: 7px;
-          background-color: $white;
-          opacity: 0;
-          transform: scaleY(0);
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 7px;
+        background-color: $white;
+        opacity: 0;
+        transform: scaleY(0);
+      }
+      &:hover{
+        background-color: #355468;
+        &::before{
+          opacity: 1;
+          transform: scaleY(1);
+          transition: transform 0.3s, opacity 0.3s;
         }
-        &:hover{
-          background-color: #355468;
-          &::before{
-            opacity: 1;
-            transform: scaleY(1);
-            transition: transform 0.3s, opacity 0.3s;
-          }
 
+      }
+      &.active{
+        background-color: #355468;
+        &::before{
+          opacity: 1;
+          transform: scaleY(1);
+          transition: transform 0.3s, opacity 0.3s;
         }
-        &.active{
-          background-color: #355468;
-          &::before{
-            opacity: 1;
-            transform: scaleY(1);
-            transition: transform 0.3s, opacity 0.3s;
-          }
-        }
+      }
 
     }
 
