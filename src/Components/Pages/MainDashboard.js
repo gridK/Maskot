@@ -54,8 +54,8 @@ function MainDashBoard() {
                         <Col>
                             <Row className="main-inspection-record-view d-flex align-items-center">
                             
-                                <h1 className="main-sub-title">Inspection Record</h1>
-                                <MiniViewBtn type="view"/>
+                                <h1 className="main-sub-title mr-2">Inspection Record</h1>
+                                <MiniViewBtn type="view" link="/inspection"/>
                             </Row>
                         </Col>
                         <h5 className="main-description-text">Not wearing mask inspection rate</h5>

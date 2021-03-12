@@ -29,24 +29,24 @@ function FullWidthCard(props) {
                                 <Col  lg="auto">
                                     <h4>{props.value_B}</h4>
                                 </Col>
-                                <Col>
-                                    <img src={props.iconUnit} ></img>
+                                <Col className="d-flex">
+                                    <img src={props.iconUnit}  className="align-self-start"></img>
                                 </Col>
                             </Row>
                             
                         </div>
                     </Row>
                 </Col>
-                <Col  className=" col-xl-2-5">
+                <Col  xl="2-5">
                     <Row className="full-width-inner-padding">
                         <img src={props.icon} className="mini-card-icon"></img>
                         <div className="mini-card-text">
-                            <p>{props.label_C}</p>
+                            <p className="d-inline-block">{props.label_C}</p>
                             <Row className="mini-card-value-text" noGutters="true">
                                 <Col  lg="auto" >
                                     <h4>{props.value_C}</h4>
                                 </Col>
-                                <Col  >
+                                <Col className="d-flex" >
                                     <img src={props.iconUnit} className="align-self-start" ></img>
                                 </Col>
                             </Row>
@@ -57,7 +57,7 @@ function FullWidthCard(props) {
                     <div className="mini-card-text">
                         <p>{props.label_D}</p>
                         <Row className="mini-card-value-text" noGutters="true">
-                            <Col  lg="auto">
+                            <Col  lg="auto" >
                                 <h4>{props.value_D}</h4>
                             </Col>
                         </Row>
@@ -65,7 +65,7 @@ function FullWidthCard(props) {
                     </div>
                 </Col>
                 <Col className="full-width-card-partial justify-content-center">
-                    <MiniViewBtn  type="view"/>
+                    <MiniViewBtn  type="view" link="/inspection"/>
                 </Col>
             </Row>
         </div>
