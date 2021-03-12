@@ -27,24 +27,24 @@ function App(){
             <div class="page-layout">
                 <SideNav />
                 <Switch>
-                <Route path="/main">
-                    <MainDashBoard /> 
-                </Route>
-                <Route path="/inspection">
-                    <InspectionRecords /> 
-                </Route>
-                <Route path="/timeline">
+                    <Route path="/main">
+                        <MainDashBoard /> 
+                    </Route>
+                    <Route path="/inspection">
+                        <InspectionRecords /> 
+                    </Route>
+                    <Route path="/timeline">
 
-                </Route>
-                <Route path="/setting">
+                    </Route>
+                    <Route path="/setting">
 
-                </Route>
-                <Route path="/temi">
+                    </Route>
+                    <Route path="/temi">
 
-                </Route>
-                <Route path="/">
-                    <MainDashBoard /> 
-                </Route>
+                    </Route>
+                    <Route path="/">
+                        <MainDashBoard /> 
+                    </Route>
                 </Switch>
             </div>
         </Router>
