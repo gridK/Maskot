@@ -9,7 +9,7 @@ function MiniCardDark(props) {
             <Row className="mini-card-inner-padding">
                 <div className="mini-card-icon-background"></div>
                 <img src={props.icon} className="mini-card-icon"></img>
-                <div className="mini-card-text ">
+                <div className="mini-card-text">
                     <p>{props.label}</p>
                     <Row className="mini-card-value-text" noGutters="true">
                         <Col  lg="9">
