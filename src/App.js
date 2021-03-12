@@ -5,7 +5,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import MainDashBoard from './Components/Pages/MainDashboard';
 import InspectionRecords from './Components/Pages/InpectionRecords';
-
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 
 
@@ -15,12 +20,31 @@ function App(){
 
 
     return (
-        <div class="page-layout">
-            <SideNav />
-            { page === 1 ? <MainDashBoard /> 
-            : page === 2 ? <InspectionRecords /> :
-            null}
-        </div>
+        <Router>
+            <div class="page-layout">
+                <SideNav />
+                <Switch>
+                <Route path="/main">
+                    <MainDashBoard /> 
+                </Route>
+                <Route path="/inspection">
+                    <InspectionRecords /> 
+                </Route>
+                <Route path="/timeline">
+
+                </Route>
+                <Route path="/setting">
+
+                </Route>
+                <Route path="/temi">
+
+                </Route>
+                <Route path="/">
+                    <MainDashBoard /> 
+                </Route>
+                </Switch>
+            </div>
+        </Router>
     );
 }
 
