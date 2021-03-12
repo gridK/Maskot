@@ -1,0 +1,29 @@
+.page-link-maskot{
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    background-color: #FFFFFF;
+    color: #355468;
+    border: 1.4px solid #DDDDDD;
+    border-radius: 6px;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+.page-item.active .page-link-maskot {
+    z-index: 3;
+    color: #fff;
+    background-color: #273E4D;
+    border-color: #dee2e6;
+}

@@ -7,6 +7,7 @@ import MiniCard from '../Utilities/MiniCard';
 import MiniViewBtn from '../Utilities/MiniViewBtn';
 import FullWidthCard from '../Utilities/FullWidthCard';
 import InspectionBarChart from '../Utilities/BarChart';
+import Paginator from '../Utilities/Pagination';
 
 function DashboardTitle(){
     return(
@@ -137,6 +138,9 @@ function MainDashBoard() {
                             />                   
                             
                     </div>
+                </div>
+                <div className="pagination-view">
+                    <Paginator />
                 </div>
             </div>
         </Container>
