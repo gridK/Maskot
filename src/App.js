@@ -42,9 +42,13 @@ function App(){
                     <Route path="/temi">
 
                     </Route>
+                    <Route path="/day-report">
+                        <DayReport/>
+                    </Route>
                     <Route path="/">
                         <MainDashBoard /> 
                     </Route>
+
                 </Switch>
             </div>
         </Router>
