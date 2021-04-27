@@ -15,7 +15,7 @@ function DashboardTitle(){
             <h1 className="main-title">Dashboard</h1>
             <Col>
                 <Row className="main-date-text pl-0">
-                    <img src="/img/icons8-calendar-256.svg" className="main-item-icon" ></img>
+                    <img src="/img/icons8-calendar-256.svg" className="main-item-icon" alt="calendar"></img>
                     <h5>February 3, 2021</h5>
                 </Row>
             </Col>
@@ -60,7 +60,8 @@ function MainDashBoard() {
                             </Row>
                         </Col>
                         <h5 className="main-description-text">Not wearing mask inspection rate</h5>
-                        {/* <InspectionBarChart /> */}
+                       
+                        <InspectionBarChart />
                         <h1 className="main-sub-title main-temp-margin">Daily Location Inspection</h1>
                     </div>
                     <div >
@@ -136,7 +137,6 @@ function MainDashBoard() {
                             label_D="Rate" 
                             value_D="14.74%" 
                             />                   
-                            
                     </div>
                 </div>
                 <div className="pagination-view">

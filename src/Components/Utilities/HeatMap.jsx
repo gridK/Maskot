@@ -30,18 +30,39 @@ function HeatColor(value){
 function HeatMap() {
     return (
         <div className="heat-map-view">
+            <div class="heat-map-row">
+                    <Col xl="2" />
+                    <Col xl="auto" > 
+                        <Row>
+                        {
+                            heatData[0].percentages.map(slot => 
+                                <div class="heat-map-column-header text-center">
+                                    <h5 className="heat-map-label column-label">{slot.time}:00</h5>
+                                </div>
+                            )
+                        }
+                        </Row>
+                    </Col>
+            </div>
+            
             {
+                
                 heatData.map(location =>
                     <div class="heat-map-row">
-                        <Col xl="2">
-                            <h5>{location.location}</h5>
+                        <Col xl="2" className="d-flex  justify-content-end">
+                            <div className=" align-self-center">
+                                <h5 className="heat-map-label row-label">{location.location}</h5>
+                            </div>
                         </Col>
                         <Col xl="auto">
                         <Row>
                             {
                                 location.percentages.map(slot => 
                                     <div class="heat-map-box ">
-                                        <div class="heat-map-inner-box" style={HeatColor(slot.value)}></div>
+                                        <div class="heat-map-inner-box" style={HeatColor(slot.value)}>
+                                        </div>
+                                        <div class="heat-map-inner-box-overlay "></div>
+                                        <img src="/img/visibility-white.svg" className="heat-map-inner-box-overlay-icon" alt="see"></img>
                                     </div>
                                 )
                             }
@@ -51,7 +72,10 @@ function HeatMap() {
                 )
             }
                 
-
+            <div class="d-flex justify-content-center mt-3">
+                <img src="/img/visibility-black.svg" className="below-label-icon" alt="see"></img>
+                <h5 class="ml-2 heat-map-label below-label my-auto">Click on timeslot to see detail</h5>
+            </div>
         </div>
     );
 }
