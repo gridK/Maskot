@@ -4,6 +4,9 @@ import SideNav from './Components/SideNav';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import MainDashBoard from './Components/Pages/MainDashboard';
+import DayReport from './Components/Pages/DayReport';
+
+
 import InspectionRecords from './Components/Pages/InpectionRecords';
 import {
     BrowserRouter as Router,
@@ -24,24 +27,28 @@ function App(){
             <div class="page-layout">
                 <SideNav />
                 <Switch>
-                <Route path="/main">
-                    <MainDashBoard /> 
-                </Route>
-                <Route path="/inspection">
-                    <InspectionRecords /> 
-                </Route>
-                <Route path="/timeline">
+                    <Route path="/main">
+                        <MainDashBoard /> 
+                    </Route>
+                    <Route path="/inspection">
+                        <InspectionRecords /> 
+                    </Route>
+                    <Route path="/timeline">
 
-                </Route>
-                <Route path="/setting">
+                    </Route>
+                    <Route path="/setting">
 
-                </Route>
-                <Route path="/temi">
+                    </Route>
+                    <Route path="/temi">
 
-                </Route>
-                <Route path="/">
-                    <MainDashBoard /> 
-                </Route>
+                    </Route>
+                    <Route path="/day-report">
+                        <DayReport/>
+                    </Route>
+                    <Route path="/">
+                        <MainDashBoard /> 
+                    </Route>
+
                 </Switch>
             </div>
         </Router>

@@ -41,6 +41,7 @@ function InspectionRecords(){
                     value_C="230" 
                     label_D="Rate" 
                     value_D="14.74%" 
+                    path="/day-report"
                     />
                 <FullWidthCard 
                     label_A="Floor 1" 
@@ -53,6 +54,7 @@ function InspectionRecords(){
                     value_C="230" 
                     label_D="Rate" 
                     value_D="14.74%" 
+                    path="/day-report"
                     />
                 <FullWidthCard 
                     label_A="Floor 1" 
@@ -65,6 +67,7 @@ function InspectionRecords(){
                     value_C="230" 
                     label_D="Rate" 
                     value_D="14.74%" 
+                    path="/day-report"
                     />           
                     <FullWidthCard 
                     label_A="Floor 1" 
@@ -77,6 +80,7 @@ function InspectionRecords(){
                     value_C="230" 
                     label_D="Rate" 
                     value_D="14.74%" 
+                    path="/day-report"
                     />           
                     <FullWidthCard 
                     label_A="Floor 1" 
@@ -89,6 +93,7 @@ function InspectionRecords(){
                     value_C="230" 
                     label_D="Rate" 
                     value_D="14.74%" 
+                    path="/day-report"
                     />           
                     <FullWidthCard 
                     label_A="Floor 1" 
@@ -101,6 +106,7 @@ function InspectionRecords(){
                     value_C="230" 
                     label_D="Rate" 
                     value_D="14.74%" 
+                    path="/day-report"
                     />
                     <FullWidthCard 
                     label_A="Floor 1" 
@@ -113,6 +119,7 @@ function InspectionRecords(){
                     value_C="230" 
                     label_D="Rate" 
                     value_D="14.74%" 
+                    path="/day-report"
                     />
                     <FullWidthCard 
                     label_A="Floor 1" 
@@ -125,6 +132,7 @@ function InspectionRecords(){
                     value_C="230" 
                     label_D="Rate" 
                     value_D="14.74%" 
+                    path="/day-report"
                     />                   
                     
             </div>
