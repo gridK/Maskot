@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import heatData from './heatData';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { NavLink } from 'react-router-dom';
 
 function HeatColor(value){
     if(value >= 15){
@@ -58,12 +59,12 @@ function HeatMap() {
                         <Row>
                             {
                                 location.percentages.map(slot => 
-                                    <div class="heat-map-box ">
+                                    <NavLink to="/timereport" className="heat-map-box ">
                                         <div class="heat-map-inner-box" style={HeatColor(slot.value)}>
                                         </div>
                                         <div class="heat-map-inner-box-overlay "></div>
                                         <img src="/img/visibility-white.svg" className="heat-map-inner-box-overlay-icon" alt="see"></img>
-                                    </div>
+                                    </NavLink>
                                 )
                             }
                         </Row>

@@ -2,17 +2,19 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Breadcrumb from 'react-bootstrap/Breadcrumb'
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import '../../Styles/maskot-styling.scss';
 import MiniCard from '../Utilities/MiniCard';
 import MiniViewBtn from '../Utilities/MiniViewBtn';
 import FullWidthCard from '../Utilities/FullWidthCard';
 import FilterDropDown from '../Utilities/FilterDropDown';
+import Paginator from '../Utilities/Pagination';
+import HeaderView from '../Utilities/HeaderView';
 
 function InspectionRecords(){
     return(
         <Container fluid >
-            <div className="view-bread-position-fixed">
+            {/* <div className="view-bread-position-fixed">
                 <Breadcrumb >
                     <Breadcrumb.Item active={true}>
                         Dashboard
@@ -21,8 +23,9 @@ function InspectionRecords(){
                         Inspection Record
                     </Breadcrumb.Item>
                 </Breadcrumb>
-            </div>
-            <div className="view-filter-group">
+            </div> */}
+            <HeaderView pageNum={2}/>
+            <div className="inpection-record-view-filter-group">
                 <Row>
                     <FilterDropDown type="filter"/>
                     <FilterDropDown type="filter"/>
@@ -135,6 +138,9 @@ function InspectionRecords(){
                     path="/dayreport"
                     />                   
                     
+            </div>
+            <div className="pagination-view">
+                <Paginator />
             </div>
 
         </Container>

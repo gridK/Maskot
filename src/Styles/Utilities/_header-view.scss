@@ -1,21 +1,23 @@
-.view-bread-position-fixed{
+.header-view-position-fixed{
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     padding-left: 21.2vw !important;
-    padding-top: 1.5% !important;
+    padding-top: 2.6% !important;
     padding-right: 1.5vw !important;
+    padding-bottom: 2% !important;
     z-index: 1;
     background-color: white;
+    
     .breadcrumb{
         background-color: white;
         padding-left: 0;
+        margin-bottom: 10px;
         .breadcrumb-item{
             font-size: 1.4vw;
-            color: #B9B9B9;
+            color: #B9B9B9 ;
             font-family: $font-SemiBold ;
-            
         }
         .active{
             color:#273E4D !important;
@@ -25,9 +27,28 @@
             color: #B9B9B9;
         }
     }
-    
 }
 
-.inpection-record-view-filter-group{
-    margin-top: 8%;
+.header-view-title{
+    font-size: 2.15rem;
+    font-family: $font-Bold;
+    margin-bottom: 0;
+}
+
+
+.header-view-sub-title{
+    margin-top: 10px;
+    h5{
+        margin-left: 10px;
+        margin-bottom: 0;
+        margin-right: 40px;
+        font-size: 1.55rem;
+        color: #355468;
+        font-family: $font-Medium;
+    }
+}
+
+.header-view-icon{
+    height: 2rem;
+    width: 2rem;
 }

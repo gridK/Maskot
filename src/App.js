@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import MainDashBoard from './Components/Pages/MainDashboard';
 import DayReport from './Components/Pages/DayReport';
+import TimeReport from './Components/Pages/TimeReport';
 import InspectionRecords from './Components/Pages/InpectionRecords';
 import {
     BrowserRouter as Router,
@@ -33,6 +34,9 @@ function App(){
                 </Route>
                 <Route path="/dayreport">
                     <DayReport /> 
+                </Route>
+                <Route path="/timereport">
+                    <TimeReport /> 
                 </Route>
                 <Route path="/timeline">
 
