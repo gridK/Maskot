@@ -18,7 +18,7 @@ function TimeReport() {
             <h1 className="main-sub-title main-temp-margin">Not Wearing Mask Detection Result</h1>
             <div className="view-filter-group">
                 <Row>
-                    <FilterDropDown type="filter"/>
+                    <FilterDropDown type="filter" filterName="Time"/>
                     <FilterDropDown />
                 </Row>
             </div>

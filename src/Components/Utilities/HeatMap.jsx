@@ -59,7 +59,7 @@ function HeatMap() {
                         <Row>
                             {
                                 location.percentages.map(slot => 
-                                    <NavLink to="/timereport" className="heat-map-box ">
+                                    <NavLink to="/main/timereport" className="heat-map-box ">
                                         <div class="heat-map-inner-box" style={HeatColor(slot.value)}>
                                         </div>
                                         <div class="heat-map-inner-box-overlay "></div>

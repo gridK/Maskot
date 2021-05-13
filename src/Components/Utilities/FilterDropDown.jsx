@@ -7,7 +7,7 @@ function FilterDropDown(props) {
         <>
         { props.type == "filter"?
             <Col xl="auto">
-                <h5 className="dropdown-label">Month</h5>
+                <h5 className="dropdown-label">{props.filterName}</h5>
                 <span className="custom-dropdown ">
                     <select >
                         <option>All</option>
@@ -20,7 +20,7 @@ function FilterDropDown(props) {
             </Col>
             :
             <Col className="d-flex align-items-end" xl="auto">
-                <MiniViewBtn type="search"/>
+                    <MiniViewBtn type="search"/>
             </Col>
         }
         </>

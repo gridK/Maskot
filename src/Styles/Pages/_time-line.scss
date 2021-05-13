@@ -1,0 +1,44 @@
+.horizontal-scroll-view{
+    width: 95%;
+    overflow: auto;
+    white-space: nowrap;
+    &::-webkit-scrollbar {
+        // display: none;
+        height: 7px;
+        
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: rgb(167, 166, 166);
+        border-radius: 20px;
+    }
+    
+}
+
+.timeline-inspection-view{
+    margin-top: 5%;
+}
+.timeline-results{
+    margin-top: 15%;
+    font-family: $font-SemiBold;
+    font-size: 1.3rem;
+    color: #CCD3D9;
+}
+
+.big-img-view{
+    padding: 0% 3% 0% 0%;
+    width: 100%;
+    border-radius: 10px;
+}
+
+// *::-webkit-scrollbar {
+//     height: 10px;
+// }
+  
+// *::-webkit-scrollbar-track {
+//     background: rgb(235, 232, 232);
+// }
+
+// *::-webkit-scrollbar-thumb {
+//     background-color: rgb(167, 166, 166);
+//     border-radius: 20px;
+// }

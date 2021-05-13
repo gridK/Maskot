@@ -8,6 +8,10 @@ import Col from 'react-bootstrap/Col';
 function HeaderView(props){
     return(
         <div className="header-view-position-fixed">
+            { props.backToPreviousPath !== undefined &&
+                <h3 className="back-to-previous">{'< '+props.backToPreviousText}</h3>
+            }
+            { props.title !== "Timeline" &&
             <Breadcrumb >
                 <Breadcrumb.Item active={true}>
                     Dashboard
@@ -23,6 +27,7 @@ function HeaderView(props){
                     </Breadcrumb.Item>
                 }
             </Breadcrumb>
+            }
             { props.title != null &&
                 <>
                 <Row noGutters={true}>

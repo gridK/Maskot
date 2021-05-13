@@ -13,7 +13,7 @@ const navList = [
 function NavItem(props) {
     return (
         <div>
-            <NavLink to={props.pages} activeClassName="active" className="side-nav-item">
+            <NavLink  to={props.pages}  activeClassName="active" className="side-nav-item">
                 <img src={props.img} className="side-nav-item-icon" ></img>
                 <p className="side-nav-item-text" >{props.item}</p>
             </NavLink>

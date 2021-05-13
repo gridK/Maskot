@@ -27,8 +27,8 @@ function InspectionRecords(){
             <HeaderView pageNum={2}/>
             <div className="inpection-record-view-filter-group">
                 <Row>
-                    <FilterDropDown type="filter"/>
-                    <FilterDropDown type="filter"/>
+                    <FilterDropDown type="filter" filterName="Month"/>
+                    <FilterDropDown type="filter" filterName="Year"/>
                     <FilterDropDown />
                 </Row>
             </div>
@@ -44,7 +44,7 @@ function InspectionRecords(){
                     value_C="230" 
                     label_D="Rate" 
                     value_D="14.74%" 
-                    path="/dayreport"
+                    path="/main/dayreport"
                     />
                 <FullWidthCard 
                     label_A="Floor 1" 
@@ -57,7 +57,7 @@ function InspectionRecords(){
                     value_C="230" 
                     label_D="Rate" 
                     value_D="14.74%" 
-                    path="/dayreport"
+                    path="/main/dayreport"
                     />
                 <FullWidthCard 
                     label_A="Floor 1" 
@@ -70,7 +70,7 @@ function InspectionRecords(){
                     value_C="230" 
                     label_D="Rate" 
                     value_D="14.74%" 
-                    path="/dayreport"
+                    path="/main/dayreport"
                     />           
                     <FullWidthCard 
                     label_A="Floor 1" 
@@ -83,7 +83,7 @@ function InspectionRecords(){
                     value_C="230" 
                     label_D="Rate" 
                     value_D="14.74%" 
-                    path="/dayreport"
+                    path="/main/dayreport"
                     />           
                     <FullWidthCard 
                     label_A="Floor 1" 
@@ -96,7 +96,7 @@ function InspectionRecords(){
                     value_C="230" 
                     label_D="Rate" 
                     value_D="14.74%" 
-                    path="/dayreport"
+                    path="/main/dayreport"
                     />           
                     <FullWidthCard 
                     label_A="Floor 1" 
@@ -109,7 +109,7 @@ function InspectionRecords(){
                     value_C="230" 
                     label_D="Rate" 
                     value_D="14.74%" 
-                    path="/dayreport"
+                    path="/main/dayreport"
                     />
                     <FullWidthCard 
                     label_A="Floor 1" 
@@ -122,7 +122,7 @@ function InspectionRecords(){
                     value_C="230" 
                     label_D="Rate" 
                     value_D="14.74%" 
-                    path="/dayreport"
+                    path="/main/dayreport"
                     />
                     <FullWidthCard 
                     label_A="Floor 1" 
@@ -135,7 +135,7 @@ function InspectionRecords(){
                     value_C="230" 
                     label_D="Rate" 
                     value_D="14.74%" 
-                    path="/dayreport"
+                    path="/main/dayreport"
                     />                   
                     
             </div>
