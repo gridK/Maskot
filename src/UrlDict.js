@@ -24,5 +24,24 @@ function GetMainDashBoardInfo(params){
     }
 }
 
+function GetInspectionRecordInfo(params) {
+    switch (params.type){
+        case "main":
+            return axios.get(baseUrl+`/dashboard/histories-dates?startDate=${params.data.date}&page=${params.data.page}&pageSize=${params.data.pageSize}`)
+        default:
+            return ("params type mismatch.");
+    }
+}
 
-export {GetMainDashBoardInfo};
+function GetDayReportInfo(params) {
+    switch(params.type){
+        case "main":
+            return axios.get(baseUrl+`/heatmaps?date=${params.date}&startTime=10:00&endTime=21:00`)
+        default:
+            return ("params type mismatch.");
+    }
+}
+export {GetMainDashBoardInfo, 
+        GetInspectionRecordInfo,
+        GetDayReportInfo
+        };

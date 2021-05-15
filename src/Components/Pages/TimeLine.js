@@ -9,10 +9,21 @@ import TimeSlotCard, {TimelineDetailCard, TimelineWithoutMaskDetection} from '..
 import ImageView from '../Utilities/ImageView';
 import CarouselControl from '../Utilities/CarouselControl';
 
+
+
+
 function TimeLine (){
     return (
         <Container fluid>
+            {/* <Row>
+                <Col lg="9"> */}
             <HeaderView title="Timeline"  backToPreviousPath="/main/timereport" backToPreviousText="Back to Search" />
+                {/* </Col>
+                <Col lg="3">
+                    <TargetedPicture />
+                </Col>
+
+            </Row> */}
             <h3 className="timeline-results">Found 20 Results</h3>
             <div className="horizontal-scroll-view">
                 <TimeSlotCard time="09:00" location="Main Atrium"/>

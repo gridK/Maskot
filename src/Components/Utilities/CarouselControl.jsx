@@ -9,7 +9,7 @@ function CarouselControl(){
             <div className="customed-carousel-control-panel">
                 <p> 1/4 </p>
             </div>
-            <img className="customed-carousel-controller-next" src="img/Icon ionic-ios-arrow-dropleft-circle.svg" alt="next"></img>
+            <img className="customed-carousel-controller-next" src="/img/Icon ionic-ios-arrow-dropleft-circle.svg" alt="next"></img>
         </div>
     );
 }

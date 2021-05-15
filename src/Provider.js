@@ -18,4 +18,6 @@ function DateTimeToLocaleDateStringLeadZero(date){
         });
 }
 
+
+
 export {DateTimeToFullString, DateTimeToLocaleDateStringLeadZero};

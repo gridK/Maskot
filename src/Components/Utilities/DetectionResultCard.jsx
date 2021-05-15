@@ -2,8 +2,9 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import { Col } from 'react-bootstrap';
 import '../../Styles/maskot-styling.scss';
+import ImageView from './ImageView';
 
-function DetectionResultCard(props) {
+function DetectionResultCardV1(props) {
     return (
         <div className="detection-result-card">
             <div className="detail">
@@ -25,6 +26,35 @@ function DetectionResultCard(props) {
             <img className="overlay-image" src="/img/sample.png"></img>
             <div className="overlay"></div>
             <img className="image" src="/img/sample.png"></img>
+        </div>
+    );
+}
+
+function DetectionResultCard(props){
+    return(
+        <div className="not-wearing-mask-detection-card">
+            <ImageView type="big" src="/img/sample.png"/>
+            <div className="not-wearing-mask-detection-detail">
+                <Row className="ml-2" noGutters={true}>
+                    <ImageView type="small-result" src="/img/Mask Group 36.png"/>
+                    <ImageView type="small-result" src="/img/Mask Group 36.png"/>
+                    <ImageView type="small-result" src="/img/Mask Group 36.png"/>
+                    <ImageView type="more-img" imgNum={5}/>
+                </Row>
+                <div className="not-wearing-mask-detection-footer">
+                    <Row >
+                        <Col md="8" className="ml-1">
+                            <div className="mini-time-slot-card">
+                                10:00 HRS.
+                            </div>
+
+                        </Col>
+                        <img className="ml-3 mr-3" src="/img/Icon awesome-expand.svg" ></img>
+                        <img src="/img/Icon awesome-trash.svg" ></img>
+
+                    </Row>
+                </div>
+            </div>
         </div>
     );
 }

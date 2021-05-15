@@ -1,4 +1,4 @@
-import React, { useState , useEffect, useMemo} from 'react';
+import React, { useState , useEffect, useCallback, useRef} from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -49,6 +49,18 @@ function MainDashBoard() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
     const [records, setRecords] = useState([]);
+    const [Paginators, setPaginators] = useState({
+        currentPage : 1,
+        totalPage: 1,
+        totalItem: 1,
+    });
+    function setCurrentPage(pagenum) {
+        setPaginators(prev => {
+            return ({currentPage : pagenum,
+            totalPage: prev.totalPage,
+            totalItem: prev.totalItem});
+        });
+    }
     var startDate = "03/05/2021";
     var endDate = "07/05/2021";
 
@@ -64,8 +76,8 @@ function MainDashBoard() {
         var currentDate = new Date()
         params.type="location inspection";
         params.data={
-            page: 1,
-            pageSize: 4,
+            page: Paginators.currentPage,
+            pageSize: 1,
             date: DateTimeToLocaleDateStringLeadZero(currentDate),
         }
         const locationInspection =GetMainDashBoardInfo(params)
@@ -73,7 +85,12 @@ function MainDashBoard() {
             axios.spread((...allData) => {
                 const mainData = allData[0].data
                 const locationData = allData[1].data.data.items
-                console.log(locationData)
+                const {totalPage, totalItem} = allData[1].data.data
+                setPaginators(prev => {
+                    return ({currentPage : prev.currentPage,
+                    totalPage: totalPage,
+                    totalItem: totalItem});
+                })
                 setItems(mainData)
                 setRecords(locationData)
                 setIsLoaded(true)
@@ -83,7 +100,7 @@ function MainDashBoard() {
     }
     useEffect( () => {
         fetchAPI()
-    }, [])
+    }, [Paginators])
 
     return(
         <>
@@ -103,7 +120,7 @@ function MainDashBoard() {
                             <Row className="main-inspection-record-view d-flex align-items-center">
                             
                                 <h1 className="main-sub-title mr-2">Inspection Record</h1>
-                                <MiniViewBtn type="view" link="/main/inspection"/>
+                                <MiniViewBtn type="view" link={"/main/inspection/"+ DateTimeToLocaleDateStringLeadZero(new Date()).replaceAll( "/" ,"-") } />
                             </Row>
                         </Col>
                         <h5 className="main-description-text">Not wearing mask inspection rate</h5>
@@ -122,7 +139,7 @@ function MainDashBoard() {
                             value_B={record.withMask} 
                             label_C="Total Without Mask" 
                             value_C={record.withoutMask} 
-                            label_D="Rate" 
+                            label_D="Without Mask Ratio" 
                             value_D={(record.withoutMaskRate*100).toFixed(2) +" %"}
                             path="/main/inspection"
                             />
@@ -131,7 +148,7 @@ function MainDashBoard() {
                     </div>
                 </div>
                 <div className="pagination-view">
-                    <Paginator />
+                    <Paginator setPage={number => setCurrentPage(number)} currentPage={Paginators.currentPage} totalPage={Paginators.totalPage} totalItem={Paginators.totalItem} />
                 </div>
             </div>
         </Container>

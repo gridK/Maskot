@@ -37,7 +37,7 @@ function App({routes}){
                     <Route path="/main/Dashboard">
                         <MainDashBoard /> 
                     </Route>
-                    <Route path="/main/inspection">
+                    <Route path="/main/inspection/:date">
                         <InspectionRecords /> 
                     </Route>
                     <Route path="/main/dayreport">
@@ -46,12 +46,15 @@ function App({routes}){
                     <Route path="/main/timereport">
                         <TimeReport /> 
                     </Route>
-                    <Route path="/timeline">
+                    <Route path="/timeline/main">
                         <MainTimeLine />
                     </Route>
-                    {/* <Route path="/timeline/report">
+                    <Route path="/timeline/report">
                         <TimeLine />
-                    </Route> */}
+                    </Route>
+                    <Route path="/main/timeline/report">
+                        <TimeLine />
+                    </Route>
                     <Route path="/setting">
 
                     </Route>
