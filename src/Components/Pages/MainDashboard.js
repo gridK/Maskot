@@ -1,4 +1,4 @@
-import React, { useState , useEffect, useCallback, useRef} from 'react';
+import React, { useState , useEffect,  useReducer ,useCallback, useRef} from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -54,15 +54,33 @@ function MainDashBoard() {
         totalPage: 1,
         totalItem: 1,
     });
-    function setCurrentPage(pagenum) {
-        setPaginators(prev => {
-            return ({currentPage : pagenum,
-            totalPage: prev.totalPage,
-            totalItem: prev.totalItem});
-        });
-    }
     var startDate = "03/05/2021";
     var endDate = "07/05/2021";
+    const fetchlocationinspection = (pagenum) => {
+        var currentDate = new Date()
+        let params = {
+            type: "location inspection",
+            data: {
+                page: pagenum,
+                pageSize: 1,
+                date: DateTimeToLocaleDateStringLeadZero(currentDate),
+            }
+        }
+        GetMainDashBoardInfo(params)
+        .then(
+            response => {
+                const locationData = response.data.data.items
+                const {totalPage, totalItem} = response.data.data
+                setPaginators(prev => {
+                    return ({ ...prev,
+                    totalPage: totalPage,
+                    totalItem: totalItem});
+                })
+                setRecords(locationData)
+                console.log("fetch location api")
+            }
+        )
+    }
 
     const fetchAPI = () => {
         let params = {
@@ -72,35 +90,29 @@ function MainDashBoard() {
                 endDate: endDate
             }
         }
-        const main = GetMainDashBoardInfo(params)
-        var currentDate = new Date()
-        params.type="location inspection";
-        params.data={
-            page: Paginators.currentPage,
-            pageSize: 1,
-            date: DateTimeToLocaleDateStringLeadZero(currentDate),
-        }
-        const locationInspection =GetMainDashBoardInfo(params)
-        axios.all([main,locationInspection]).then(
-            axios.spread((...allData) => {
-                const mainData = allData[0].data
-                const locationData = allData[1].data.data.items
-                const {totalPage, totalItem} = allData[1].data.data
-                setPaginators(prev => {
-                    return ({currentPage : prev.currentPage,
-                    totalPage: totalPage,
-                    totalItem: totalItem});
-                })
-                setItems(mainData)
-                setRecords(locationData)
+        GetMainDashBoardInfo(params)
+        .then(
+            response => {
+                setItems(response.data)
+                fetchlocationinspection(1)
                 setIsLoaded(true)
-            })
+                console.log("fetch main api")
+            }
         )
 
     }
+    
+    function  setCurrentPage(pagenum) {
+        setPaginators({currentPage : pagenum });
+        console.log(pagenum)
+        console.log(Paginators)
+        fetchlocationinspection(pagenum)
+        
+    }
     useEffect( () => {
         fetchAPI()
-    }, [Paginators])
+        console.log("fetch both api")
+    }, [])
 
     return(
         <>
@@ -128,7 +140,7 @@ function MainDashBoard() {
                         <InspectionBarChart inspectionRecords={items.data.inspectionRecords}/>
                         <h1 className="main-sub-title main-temp-margin">Daily Location Inspection</h1>
                     </div>
-                    <div >
+                    <div>
                     { records.map( record => 
                         <FullWidthCard 
                             label_A={"Floor "+record.floorNumber}

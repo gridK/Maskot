@@ -3,6 +3,8 @@ import '../../Styles/maskot-styling.scss';
 import Row from 'react-bootstrap/Row';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import Col from 'react-bootstrap/Col';
+import { NavLink } from 'react-router-dom';
+import {DateTimeToFullString, DateTimeToLocaleDateStringLeadZero} from '../../Provider';
 
 function TargetedPicture(props){
     return (
@@ -14,6 +16,7 @@ function TargetedPicture(props){
 }
 
 function HeaderView(props){
+    const [date, month, year] = props.date.split(" ")
     return(
         <div className="header-view-position-fixed">
             <Row>
@@ -23,17 +26,23 @@ function HeaderView(props){
                 }
                 { props.title !== "Timeline" &&
                 <Breadcrumb >
-                    <Breadcrumb.Item active={true}>
-                        Dashboard
+                    <Breadcrumb.Item >
+                        <NavLink to="/main/" className="inactive">
+                            Dashboard
+                        </NavLink>
                     </Breadcrumb.Item>
                     { props.pageNum >= 2 &&
-                        <Breadcrumb.Item active={true}>
-                            Inspection Record
+                        <Breadcrumb.Item >
+                            <NavLink to={"/main/inspection/"+ DateTimeToLocaleDateStringLeadZero(new Date()).replaceAll( "/" ,"-") }>
+                                Inspection Record
+                            </NavLink>
                         </Breadcrumb.Item>
                     }
                     { props.pageNum >= 3 &&
-                        <Breadcrumb.Item active={true}>
-                            Day report
+                        <Breadcrumb.Item >
+                            <NavLink to={"/main/dayreport/"+props.date}>
+                                Day report
+                            </NavLink>
                         </Breadcrumb.Item>
                     }
                 </Breadcrumb>
@@ -45,7 +54,7 @@ function HeaderView(props){
                     </Row>
                     <Row noGutters={true} className="header-view-sub-title">
                         <img src="/img/icons8-calendar-256.svg" className="header-view-icon" alt="date"></img>
-                        <h5>February 3, 2021</h5>
+                        <h5>{month+" "+date +", "+year}</h5>
                         { props.page === "time" ?
                             <>
                             <img src="/img/icons8-clock.svg" className="header-view-icon" alt="time"></img>

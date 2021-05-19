@@ -14,6 +14,9 @@ function MainTimeLine(){
             <Row>
                 <FilterDropDown type="filter" filterName="Date"/>
             </Row>
+            <div className="my-5 ml-2">
+                <img src="/img/Group 124.jpg" alt="drop-file-area" width="98%"></img>
+            </div>
 
             <Row className="justify-content-end mr-3">
                 <MiniViewBtn type="search-redirect" redirectPath="/timeline/report"/>

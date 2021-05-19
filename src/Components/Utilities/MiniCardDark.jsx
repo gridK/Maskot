@@ -11,13 +11,9 @@ function MiniCardDark(props) {
                 <img src={props.icon} className="mini-card-icon"></img>
                 <div className="mini-card-text">
                     <p>{props.label}</p>
-                    <Row className="mini-card-value-text" noGutters="true">
-                        <Col  lg="9">
-                            <h4>{props.value}</h4>
-                        </Col>
-                        <Col >
-                            <img src={props.iconUnit} ></img>
-                        </Col>
+                    <Row className="mini-card-value-text " noGutters="true">
+                        <h4>{props.value}</h4>
+                        <img src={props.iconUnit} ></img>
                     </Row>
                     
                 </div>

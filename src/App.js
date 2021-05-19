@@ -40,7 +40,7 @@ function App({routes}){
                     <Route path="/main/inspection/:date">
                         <InspectionRecords /> 
                     </Route>
-                    <Route path="/main/dayreport">
+                    <Route path="/main/dayreport/:date">
                         <DayReport /> 
                     </Route>
                     <Route path="/main/timereport">

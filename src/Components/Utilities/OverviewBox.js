@@ -16,9 +16,24 @@ function OverviewBox(props){
                             </Col>
                             <Col sm="auto">
                                 <Row>
-                                    <p className="overview-trend">D <span >2.4%</span></p>
-                                    <p className="overview-trend">W <span >2.4%</span></p>
-                                    <p className="overview-trend">M <span >2.4%</span></p>
+                                    <p className="overview-trend">D 
+                                        <span style={props.overviewRate.previousDateChangedRatio <= 0 ? {color: '#1ABC9C'} : {color: 'red' }}>
+                                            {props.overviewRate.previousDateChangedRatio <= 0 ? <img src="/img/icons8-down-arrow-100.svg" alt="down"></img>: <img src="/img/icons8-up-arrow-96.svg" alt="up"></img>}
+                                            {Math.abs(props.overviewRate.previousDateChangedRatio).toFixed(2)}%
+                                        </span>
+                                    </p>
+                                    <p className="overview-trend">W 
+                                        <span style={props.overviewRate.previousWeekChangedRatio <= 0 ? {color: '#1ABC9C'} : {color: 'red' }}>
+                                            {props.overviewRate.previousWeekChangedRatio <= 0 ? <img src="/img/icons8-down-arrow-100.svg" alt="down"></img>: <img src="/img/icons8-up-arrow-96.svg" alt="up"></img>}
+                                            {Math.abs(props.overviewRate.previousWeekChangedRatio.toFixed(2))}%
+                                        </span>
+                                    </p>
+                                    <p className="overview-trend">M 
+                                        <span style={props.overviewRate.previousMonthChangedRatio <= 0 ? {color: '#1ABC9C'} : {color: 'red' }}>
+                                            {props.overviewRate.previousMonthChangedRatio <= 0 ? <img src="/img/icons8-down-arrow-100.svg" alt="down"></img>: <img src="/img/icons8-up-arrow-96.svg" alt="up"></img>}
+                                            {Math.abs(props.overviewRate.previousMonthChangedRatio.toFixed(2))}%
+                                        </span>
+                                    </p>
                                 </Row>
                             </Col>
                             {/* implement conditional rendering based on trend  */}
@@ -28,13 +43,13 @@ function OverviewBox(props){
                     }
                     <Row className="overview-margin-mini-card">
                         <Col md="auto">
-                            <MiniCardDark  label="Total With Mask" value="27,500" icon="/img/icons8-protection-mask-128.svg" iconUnit="/img/icons8-person-64.svg"/> 
+                            <MiniCardDark  label="Total With Mask" value={props.data.totalWithMask} icon="/img/icons8-protection-mask-128.svg" iconUnit="/img/icons8-person-64.svg"/> 
                         </Col>
                         <Col md="auto">
-                            <MiniCardDark label="Total Without Mask" value="2,850" icon="/img/icons8-protection-mask-128.svg" iconUnit="/img/icons8-person-64.svg"/> 
+                            <MiniCardDark label="Total Without Mask" value={props.data.totalWithoutMask} icon="/img/icons8-protection-mask-128.svg" iconUnit="/img/icons8-person-64.svg"/> 
                         </Col>
                         <Col md="auto">
-                            <MiniCardDark  label="Rate" value="12.59%" icon="/img/icons8-protection-mask-128.svg" iconUnit="/img/icons8-person-64.svg"/> 
+                            <MiniCardDark  label="Rate" value={(props.data.rate*100).toFixed(2)+" %"} icon="/img/icons8-protection-mask-128.svg" iconUnit="/img/icons8-person-64.svg"/> 
                         </Col>
                     </Row>
                 </Col>

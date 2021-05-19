@@ -7,7 +7,7 @@ function Paginator(props) {
     for(let i=1; i <= props.totalPage; i++) {
         pageNumbers.push(i)
     }
-    console.log(pageNumbers)
+    console.log(props.currentPage)
     return(
         <nav aria-label="...">
             <ul class="pagination pagination-md">
@@ -26,8 +26,7 @@ function Paginator(props) {
                     {pagenum !== props.currentPage &&
                         <li onClick={() => props.setPage(pagenum)} class="page-item mx-2"><a class="page-link-maskot" href="#">{pagenum}</a></li>
                     }
-                    </>
-
+                   </>
                 )
                 }
                 

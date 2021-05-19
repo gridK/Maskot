@@ -15,13 +15,19 @@
         padding-left: 0;
         margin-bottom: 10px;
         .breadcrumb-item{
-            font-size: 1.4vw;
-            color: #B9B9B9 ;
-            font-family: $font-SemiBold ;
+            a{
+                font-size: 1.4vw;
+                color: #B9B9B9 ;
+                font-family: $font-SemiBold ;
+            }
+            .active{
+                color:#273E4D ;
+            }
+            .inactive{
+                color:#B9B9B9 !important;
+            }
         }
-        .active{
-            color:#273E4D !important;
-        }
+        
         .breadcrumb-item + .breadcrumb-item::before {
             content: ">";
             color: #B9B9B9;

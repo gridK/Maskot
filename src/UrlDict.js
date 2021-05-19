@@ -36,7 +36,13 @@ function GetInspectionRecordInfo(params) {
 function GetDayReportInfo(params) {
     switch(params.type){
         case "main":
-            return axios.get(baseUrl+`/heatmaps?date=${params.date}&startTime=10:00&endTime=21:00`)
+            return axios.get(baseUrl+`/dashboard/heatmaps?startTime=${params.data.startTime}&dateFormat=${params.data.dateFormat}&date=${params.data.date}&endTime=${params.data.endTime}`)
+        case "overview":
+            return axios.get(baseUrl+`/dashboard/statistics?date=${params.data.date}&dateFormat=${params.data.dateFormat}`)
+        case "overview-rate":
+            return axios.get(baseUrl+`/dashboard/statistic-compares?date=${params.data.date}&dateFormat=${params.data.dateFormat}`)
+        case "location inspection":
+            return axios.get(baseUrl+`/dashboard/histories-locations?page=${params.data.page}&pageSize=${params.data.pageSize}&date=${params.data.date}&dateFormat=${params.data.dateFormat}`)
         default:
             return ("params type mismatch.");
     }

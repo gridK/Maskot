@@ -25,14 +25,19 @@ function InspectionRecords(){
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
+    const [Paginators, setPaginators] = useState({
+        currentPage : 1,
+        totalPage: 1,
+        totalItem: 1,
+    });
 
-    const fetchAPI = () => {
+    const fetchmainAPI = (pagenum) => {
         let params = {
             type: "main",
             data: {
                 date: currentday,
-                page: 1,
-                pageSize: 10,
+                page: pagenum,
+                pageSize: 5,
             }
         }
         const main = GetInspectionRecordInfo(params)
@@ -41,12 +46,30 @@ function InspectionRecords(){
             axios.spread((...allData) => {
                 console.log(allData);
                 const mainData = allData[0].data.data.items
+                const {totalPage, totalItem} = allData[0].data.data
                 console.log(mainData);
+                setPaginators(prev => {
+                    return ({ ...prev,
+                    totalPage: totalPage,
+                    totalItem: totalItem});
+                })
                 setItems(mainData)
                 setIsLoaded(true)
             })
         )
 
+    }
+
+    const fetchAPI = () =>{
+        fetchmainAPI(1)
+    }
+
+    function  setCurrentPage(pagenum) {
+        setPaginators({currentPage : pagenum });
+        console.log(pagenum)
+        console.log(Paginators)
+        fetchmainAPI(pagenum)
+        
     }
     useEffect( () => {
         fetchAPI()
@@ -56,11 +79,11 @@ function InspectionRecords(){
         <>
         { isLoaded &&
         <Container fluid >
-            <HeaderView pageNum={2}/>
+            <HeaderView pageNum={2} date=" "/>
             <div className="inpection-record-view-filter-group">
                 <Row>
-                    <FilterDropDown type="filter" filterName="Month"/>
                     <FilterDropDown type="filter" filterName="Year"/>
+                    <FilterDropDown type="filter" filterName="Month"/>
                     <FilterDropDown />
                 </Row>
             </div>
@@ -77,14 +100,14 @@ function InspectionRecords(){
                         value_C={record.withoutMask}  
                         label_D="Without Mask Ratio" 
                         value_D={(record.withoutMaskRate*100).toFixed(2) +" %"}  
-                        path={"/main/dayreport"}
+                        path={"/main/dayreport/"+ record.dateTime}
                         />
                     )
                 }
                 
             </div>
             <div className="pagination-view">
-                <Paginator />
+                <Paginator setPage={number => setCurrentPage(number)} currentPage={Paginators.currentPage} totalPage={Paginators.totalPage} totalItem={Paginators.totalItem}/>
             </div>
 
         </Container>
