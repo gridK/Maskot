@@ -100,7 +100,7 @@ function TimeReport() {
 
         axios.all([main]).then(
             axios.spread((...allData) => {
-                console.log(allData);
+                console.log('fdfdfd', allData);
                 const mainData = allData[0].data.data.items
                 const {totalPage, totalItem} = allData[0].data.data
                 console.log(mainData);
@@ -110,6 +110,8 @@ function TimeReport() {
                     totalItem: totalItem});
                 })
                 setItems(mainData)
+                // setIsLoaded(true)
+                console.log('dfddfffddf', mainData)
             })
         )
     }
@@ -127,14 +129,19 @@ function TimeReport() {
     }
 
     function callFilterTime() {
-        setPaginators({
-            currentPage : 1,
-            totalPage: 1,
-            totalItem: 1,
-        });
+        // setPaginators({
+        //     currentPage : 1,
+        //     totalPage: 1,
+        //     totalItem: 1,
+        // });
         fetchmainAPI(1)
         console.log("got ya na");
     }
+
+    useEffect( () => {
+        console.log('aaaaaaaaaaaaaaaaaaaa', items);
+        console.log('fddddddddddd', isLoaded)
+    }, [items])
 
     useEffect( () => {
         // constructTimeSelectList()
@@ -156,67 +163,25 @@ function TimeReport() {
                     <FilterDropDown onClickEvent={callFilterTime}/>
                 </Row>
             </div>
+            <div>
             
-            {/* index % 3 == 0 && <Row className="detection-result-container">
-                <Col md="4" className="temp">
-                    <DetectionResultCard  {...record}/>
-                </Col>
-                { (index % 3 == 2 || index == items.length-1) && </Row> } */}
-
-            {/* {items.map( (record, index) => 
-                index % 3 == 0 ? 
+            {items &&
+            items.map((record, index) => (
+                index % 3 == 0 &&
                     <Row className="detection-result-container">
                         <Col md="4" className="temp">
                             <DetectionResultCard  {...record}/>
-                        </Col> 
-                    : index % 3 == 2 ? 
-                        <Col md="4" className="temp">
-                            <DetectionResultCard  {...record}/>
                         </Col>
-                    </Row> 
-                    : index == items.length - 1 ?
                         <Col md="4" className="temp">
-                            <DetectionResultCard  {...record}/>
+                            <DetectionResultCard  {...items[index+1]} />
                         </Col>
-                    : 
                         <Col md="4" className="temp">
-                            <DetectionResultCard  {...record}/>
+                            <DetectionResultCard  {...items[index+2]}/>
                         </Col>
-            )} */}
-
-            <Row className="detection-result-container">
-                <Col md="4" className="temp">
-                    <DetectionResultCard />
-                </Col>
-                <Col md="4" className="temp">
-                    <DetectionResultCard />
-                </Col>
-                <Col md="4" className="temp">
-                    <DetectionResultCard />
-                </Col>
-            </Row>
-            <Row className="detection-result-container">
-                <Col md="4" className="temp">
-                    <DetectionResultCard />
-                </Col>
-                <Col md="4" className="temp">
-                    <DetectionResultCard />
-                </Col>
-                <Col md="4" className="temp">
-                    <DetectionResultCard /> 
-                </Col>
-            </Row>
-            <Row className="detection-result-container">
-                <Col md="4" className="temp">
-                    <DetectionResultCard />
-                </Col>
-                <Col md="4" className="temp">
-                    <DetectionResultCard />
-                </Col>
-                <Col md="4" className="temp">
-                    <DetectionResultCard />
-                </Col>
-            </Row>
+                    </Row>
+            ))}
+            </div>  
+            
             <div className="pagination-view">
                 <Paginator setPage={number => setCurrentPage(number)} currentPage={Paginators.currentPage} totalPage={Paginators.totalPage} totalItem={Paginators.totalItem}/>
             </div>
