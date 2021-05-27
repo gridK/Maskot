@@ -3,6 +3,12 @@ import '../../Styles/maskot-styling.scss';
 import {NavLink} from 'react-router-dom'
 
 function MiniViewBtn(props) {
+
+    function selectFilter(event) {
+        const value = event.target.value
+        props.setFilter(value);
+    }
+
     return(
         <>
         { props.type === "view" ?
@@ -18,7 +24,7 @@ function MiniViewBtn(props) {
                 </NavLink>
             :
                 <div className="mini-btn search-btn ">
-                    <h5>Search</h5>
+                    <h5 onClick={props.onClickEvent}>Search</h5>
                 </div>
             }
             </>
