@@ -156,6 +156,7 @@ function DayReport() {
                         label_A={"Floor "+record.floorNumber}
                         value_A={record.locationNameEn}
                         icon="/img/icons8-protection-mask-128.svg" 
+                        iconNon="/img/Group 22.jpg"
                         iconUnit="/img/icons8-person-64.svg"
                         label_B="Total With Mask" 
                         value_B={record.withMask} 

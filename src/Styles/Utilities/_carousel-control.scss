@@ -13,6 +13,9 @@
         width: 30px;
         transform: rotate(180deg);
         margin-left: 2%;
+        &.disable{
+            transform: rotate(0);
+        }
     }
     .customed-carousel-control-panel{
         width: 20%;

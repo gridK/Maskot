@@ -38,7 +38,6 @@ function TimeLine (){
         location: ""
     })
     const [additionalTimelineInfo, setAdditionalTimelineInfo] = useState([])
-    const [activeSlotId, setActiveSlotId] = useState(0)
 
 
     function dataURItoBlob(dataURI) {
@@ -82,7 +81,7 @@ function TimeLine (){
         )
     }
 
-    const fetchDetectedImages = (detectedimages, time, location) => {
+    const fetchDetectedImages = (detectedimages) => {
         let params = {
             type: "timeline-info",
             data: {
@@ -92,34 +91,34 @@ function TimeLine (){
         GetTimeLineInfo(params)
         .then(
             response => {
-                
                 setAdditionalTimelineInfo(response.data.data)
                 setDetectedResult(response.data.data.images)
                 console.log("fetch detected images api")
                 console.log(response.data.data)
-                
-            }
-        ).then(
-            async() => {
-                return await setTimelineInfo({
-                    time: time,
-                    location: location
+                setDetectedImages(detectedimages)
+                setCarouselNumber({
+                    currentImage: 1,
+                    totalImages: detectedimages.length
                 })
             }
         )
-        .then(
-            () => {
-                console.log(timelineInfo)
-                setDetectedImages(detectedimages)
-            }
-         )
     }
 
     function setDetectedImageList(detectedimages, time, location) {
-        fetchDetectedImages(detectedimages, time, location)
+        setTimelineInfo({
+            time: time,
+            location: location
+        })
+        fetchDetectedImages(detectedimages)
         
-        console.log(detectedResult[CarouselNumber.currentImage -1])
-        
+    }
+
+    function setCarouselView(num) {
+        setCarouselNumber(prev => {
+            return ({...prev,
+                currentImage: num
+            })
+        })
     }
 
     useEffect( () => {
@@ -137,7 +136,7 @@ function TimeLine (){
             <h3 className="timeline-results">Found {items.data.length} Results</h3>
             <div className="horizontal-scroll-view">
                 { items.data.map( (record, index) => 
-                    <TimeSlotCard currentTimeLine={timelineInfo} setTimeLine={(detectedimageIds, time, location) => setDetectedImageList(detectedimageIds, time, location)} time={record.capturedTime} location={record.locationNameEn} detectedIds={record.detectedImageId}/>
+                    <TimeSlotCard currentTimeLine={timelineInfo.time} setTimeLine={(detectedimageIds, time, location) => setDetectedImageList(detectedimageIds, time, location)} time={record.capturedTime} location={record.locationNameEn} detectedIds={record.detectedImageId}/>
                 )
                 }
             </div> 
@@ -147,7 +146,7 @@ function TimeLine (){
                     <div className="mx-auto d-flex justify-content-center">
                         <ImageView type="big" src={detectedResult[CarouselNumber.currentImage -1].imageUrl}/>
                     </div>
-                    <CarouselControl />
+                    <CarouselControl setImgView={(num) => setCarouselView(num)} currentNum= {CarouselNumber.currentImage} totalNum= {CarouselNumber.totalImages}/>
                 </Col>
                 <Col lg={6}>
                     <TimelineDetailCard time={timelineInfo.time} location={timelineInfo.location} Maskvalue={additionalTimelineInfo.totalWithMask} UnMaskvalue={additionalTimelineInfo.totalWithoutMask}/>

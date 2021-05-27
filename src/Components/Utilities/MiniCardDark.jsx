@@ -8,7 +8,15 @@ function MiniCardDark(props) {
         <div className="mini-card-box-dark">
             <Row className="mini-card-inner-padding">
                 <div className="mini-card-icon-background"></div>
-                <img src={props.icon} className="mini-card-icon"></img>
+                { props.label === "Total With Mask" &&
+                    <img src={props.icon} className="mini-card-icon"></img>
+                }
+                { props.label === "Total Without Mask" &&
+                    <img src={props.icon} className="mini-card-icon not-masked"></img>
+                }
+                { props.label === "Rate" &&
+                    <img src={props.icon} className="mini-card-icon rate"></img>
+                }
                 <div className="mini-card-text">
                     <p>{props.label}</p>
                     <Row className="mini-card-value-text " noGutters="true">

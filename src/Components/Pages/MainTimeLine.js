@@ -83,7 +83,7 @@ function MainTimeLine(){
             </div>
 
             <Row className="main-timeline-footer justify-content-end mr-3">
-                <MiniViewBtn type="search-redirect" redirectPath={"/timeline/report/"+DateTimeToLocaleDateStringLeadZero(new Date()).replaceAll( "/" ,"-")}/>
+                <MiniViewBtn type="search-redirect" redirectPath={"/timeline/report/"+Selecteddate.replaceAll( "/" ,"-")}/>
             </Row>
         </Container>
     );
