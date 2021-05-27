@@ -4,16 +4,16 @@ import App from '../App';
 import {NavLink} from 'react-router-dom'
 const navList = [
     {img: '/img/blank-icon.svg',item: "Dashboard", pages: '/main'},
-    {img: '/img/blank-icon.svg',item:"Timeline" , pages: '/timeline'},
-    {img: '/img/blank-icon.svg',item:"Temi Overview" , pages: '/temi'},
-    {img: '/img/blank-icon.svg',item:"Setting" , pages: '/setting'}
+    {img: '/img/blank-icon.svg',item:"Timeline" , pages: '/timeline/main'},
+    // {img: '/img/blank-icon.svg',item:"Temi Overview" , pages: '/temi'},
+    // {img: '/img/blank-icon.svg',item:"Setting" , pages: '/setting'}
 ]
 
 
 function NavItem(props) {
     return (
         <div>
-            <NavLink to={props.pages} activeClassName="active" className="side-nav-item">
+            <NavLink  to={props.pages}  activeClassName="active" className="side-nav-item">
                 <img src={props.img} className="side-nav-item-icon" ></img>
                 <p className="side-nav-item-text" >{props.item}</p>
             </NavLink>

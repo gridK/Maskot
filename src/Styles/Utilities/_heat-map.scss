@@ -1,5 +1,26 @@
+.heat-map-label{
+    font-family: $font-Text;
+    
+    &.row-label{
+        font-size: 21px;
+    }
+    &.column-label{
+        font-size: 17px;
+    }
+    &.below-label{
+        font-family: $font-Medium;
+        font-size: 16px;
+    }
+}
+.below-label-icon{
+    height: 27px;
+    width: 27px;
+}
+
 .heat-map-view{
     width: 100%;
+    margin-top: 2%;
+    margin-bottom: 5%;
 }
 
 .heat-map-row{
@@ -12,15 +33,50 @@
     height: fit-content;
     margin-left: 1px;
     margin-right: 1px;
+    position: relative;
+    &:hover{
+        .heat-map-inner-box-overlay{
+            visibility: visible;
+        }
+        .heat-map-inner-box-overlay-icon{
+            visibility: visible;
+        }
+    }
 }
-
+.heat-map-column-header{
+    width: 64px;
+}
 .heat-map-inner-box{
     position: relative;
     display: block;
     width: 61px;
     height: 61px;
-    margin-left: -1px;
+    margin-left: 1px;
     line-height: 1.25;
     background-color: #FFFFFF;
     color: #355468;
+    z-index: 0;
+    
+}
+
+.heat-map-inner-box-overlay{
+    visibility: hidden;
+    background-color: #000000;
+    opacity: 35%;
+    width: 61px;
+    height: 61px;
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    right: 0;
+    
+} 
+.heat-map-inner-box-overlay-icon{
+    visibility: hidden;
+    position: absolute;
+    top: 25%;
+    right: 25%;
+    z-index: 20;
+    width: 30px;
+    height: 30px;
 }

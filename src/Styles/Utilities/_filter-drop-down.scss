@@ -1,3 +1,8 @@
+.view-filter-group{
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
 .custom-dropdown {
     position: relative;
     display: inline-block;
@@ -14,6 +19,7 @@
         border-radius: 10px;
         text-indent: 0.01px;
         text-overflow: '';
+        width: 10rem;
       /*   -webkit-appearance: button; /* hide default arrow in chrome OSX */ 
     }
     &::before{

@@ -1,0 +1,128 @@
+.time-slot-card-grey{
+    display: inline-block;
+    border-radius: 10px;
+    background-color: #E1E5E8;
+    padding: 0.9% 1.5% 2% 1.5%;
+    width: 9rem;
+    height: 4.5rem;
+    color:#355468;
+    margin-right: 1rem;
+    h2{
+        font-family: $font-Bold;
+        font-size: 1.3rem;
+    }
+    h5{
+        font-family: $font-Medium;
+        font-size: 1rem;
+    }
+}
+
+.time-slot-card-active{
+    display: inline-block;
+    border-radius: 10px;
+    background-color: #355468;
+    padding: 0.9% 1.5% 2% 1.5%;
+    width: 9rem;
+    height: 4.5rem;
+    color:white;
+    margin-right: 1rem;
+    h2{
+        font-family: $font-Bold;
+        font-size: 1.3rem;
+    }
+    h5{
+        font-family: $font-Medium;
+        font-size: 1rem;
+    }
+}
+
+.timeline-detail-card{
+    background-color: #2D495C;
+    width: 90%;
+    height: 70%;
+    color: white;
+    border-radius: 10px;
+    margin-left: 5%;
+    .timeline-detail-card-top{
+        background-color: #355468;
+        padding-top: 6%;
+        padding-bottom: 5.5%;
+        padding-left: 6%;
+        border-radius: 10px;
+        h1{
+            font-family: $font-Medium;
+            font-size: 2.5rem;
+            margin-bottom: 3%;  
+        }
+        h3{
+            font-family: $font-Bold;
+            font-size: 1.3rem;
+        }
+    }
+    
+    h2{
+        font-family: $font-Bold;
+        font-size: 1.3rem;
+        margin-left: 8%;
+        margin-top: 4%;
+        margin-bottom: 4%;
+    }
+    .mini-timeline-card-text{
+        padding-left: 6%;
+        p{
+            margin-bottom: 0px;
+            font-family: $font-Text ;
+            font-size: 15px;
+        }
+        .mini-card-value-text{
+            h4{   
+                font-family: $font-SemiBold;
+                font-size: 19px;
+            }
+            img{
+                margin-left: 2px;
+                width: 23px;
+                height: 23px;
+            }
+        }
+    
+    }
+    .mini-card-icon-background{
+        position: absolute;
+        z-index: 0;
+        width: 38px;
+        height: 38px;
+        border-radius: 25px;
+        background-color: #62A1C9;
+        margin-left: -2px;
+        margin-top: 3px;
+    }
+    img {
+        width: 35px;
+        height: 35px;
+        margin-top: 1.5px;
+        z-index: 0;
+    }
+}
+
+.timeline-without-mask-detection{
+    margin-top: 3%;
+    height: 27%;
+    width: 90%;
+    background-color: #EAEDEF;
+    padding: 3% 4% 2% 4%;
+    margin-left: 5%;
+    border-radius: 10px;
+    .timeline-without-mask-title{
+        font-family: $font-SemiBold;
+        font-size: 1.2rem;
+        color: #355468;
+    }
+    .horizontal-scroll-view{
+        .small-img-view{
+            border-radius: 5px;
+            height: 50px;
+            margin-right: 2%;
+        }
+    }
+}

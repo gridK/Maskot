@@ -36,6 +36,56 @@
     }
 }
 
+.mini-card-box-dark{
+    border-radius: 10px;
+    padding: 3% 0 9.1% 9.7%;
+    width: 14rem;
+    height: 4.5rem;
+    background-color: #355468;
+    .mini-card-inner-padding{
+        padding-left: inherit;
+    }
+    .mini-card-icon-background{
+        position: absolute;
+        z-index: 0;
+        width: 52px;
+        height: 52px;
+        border-radius: 26px;
+        background-color: #62A1C9;
+        margin-left: -2px;
+        margin-top: 3px;
+    }
+    .mini-card-icon{
+        width: 47px;
+        height: 47px;
+        margin-top: 3px;
+        z-index: 0;
+    }
+    .mini-card-text{
+        padding-left: 6%;
+
+        p{
+            margin-bottom: 0px;
+            font-family: $font-Text ;
+            color: #DDDDDD;
+            font-size: 15px;
+        }
+        .mini-card-value-text{
+            h4{   
+                font-family: $font-SemiBold;
+                font-size: 27px;
+                color:#DDDDDD;
+            }
+            img{
+                margin-left: 2px;
+                width: 23px;
+                height: 23px;
+            }
+        }
+
+    }
+}
+
 .mini-btn{
     border-radius: 10px;
     background-color: #355468;
@@ -62,3 +112,4 @@
         width: 20px;
     }
 }
+

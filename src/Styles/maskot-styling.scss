@@ -14,7 +14,9 @@
 // Pages
 @import 'Pages/layout';
 @import 'Pages/main-dashboard';
+@import 'Pages/day-report';
 @import 'Pages/inspection-records';
+@import 'Pages/time-line';
 
 
 // Utilities
@@ -23,3 +25,9 @@
 @import 'Utilities/filter-drop-down';
 @import 'Utilities/pagination';
 @import 'Utilities/heat-map';
+@import 'Utilities/detection-result-card';
+@import 'Utilities/filter-drop-down';
+@import 'Utilities/overview-box';
+@import 'Utilities/header-view';
+@import 'Utilities/time-slot-card';
+@import 'Utilities/carousel-control';

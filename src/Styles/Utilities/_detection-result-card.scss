@@ -1,0 +1,180 @@
+.detection-result-card{
+    position: relative;
+    height: fit-content;
+    display: block;
+    z-index: -1;
+    .image{
+        width: 100%;
+        height: auto;
+        border-radius: 1rem;
+        z-index: 0;
+        display: block;
+    }
+    .button-icon{
+        width: 100%;
+        height: auto;
+        // margin-left: -15px;
+        // margin-right: -15px;
+    }
+    .overlay{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: black;
+        opacity: 0.3;
+        z-index: 1;
+        border-radius: 1rem;
+    }
+    .overlay-image{
+        position: absolute;
+        height: auto;
+        width: 100%;
+        border-radius: 1rem;
+        z-index: 2;
+        clip-path: circle(30px at 60px 60px);
+    }
+    .overlay-image-frame{
+        position: absolute;
+        border: 3px solid #DDDDDD;
+        width: 60px;
+        height: 60px;
+        top: 30px;
+        left: 30px;
+        border-radius: 30px;
+        z-index: 3;
+    }
+    .profile-background-button{
+        position: absolute;
+        z-index: 4;
+        width: 35px;
+        height: 35px;
+        top: 70px;
+        left: 70px;
+        border-radius: 17.5px;
+        border: 3px solid #DDDDDD;
+        background-color: azure;
+        filter: blur(1px) opacity(70%);
+    }
+    .profile-icon-button{
+        position: absolute;
+        z-index: 4;
+        width: 35px;
+        height: 35px;
+        top: 70px;
+        left: 70px;
+    }
+    .gradient-layer{
+        width: 100%;
+        height: 40%;
+        bottom: 0px;
+        position: absolute;
+        border-radius: 1rem;
+        z-index: 4;
+        background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
+    }
+
+    .detail{
+        position: absolute;
+        z-index: 5;
+        bottom: 0px;
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 100%;
+        height: 20%;
+        // display: flex;
+        // align-items: center;
+        .detail-padding{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .text-container{
+            display: flex;
+            align-items: center;
+        }
+        h4{
+            padding: 0;
+            margin: 0;
+            font-family: $font-SemiBold;
+            font-size: 1.3vw;
+            color:#DDDDDD;
+        }
+    }
+}
+
+.not-wearing-mask-detection-card {
+    border: 1px solid #DDDDDD;
+    border-radius: 15px;
+    .big-img-view{
+        width: 100%;
+        border-radius: 15px 15px 0px 0px;
+    }
+    .not-wearing-mask-detection-detail{
+        .small-img-view{
+            border-radius: 5px;
+            height: 60px;
+            margin: 4% 2% 4% 2%;
+            position: relative;
+            &:hover{
+                .img-result-overlay{
+                    visibility: visible;
+                }
+                .img-result-overlay-icon{
+                    visibility: visible;
+                }
+            }
+            .img-result-overlay{
+                visibility: hidden;
+                border-radius: 5px;
+                background-color: #000000;
+                opacity: 35%;
+                width: 60px;
+                height: 60px;
+                z-index: 10;
+                position: absolute;
+                top: 0;
+                right: 0;
+                
+            } 
+            .img-result-overlay-icon{
+                visibility: hidden;
+                position: absolute;
+                top: 25%;
+                right: 25%;
+                z-index: 20;
+                width: 30px;
+                height: 30px;
+            }
+        }
+        
+        
+        .more-img-background{
+            background-color: #355468;
+            justify-content: center;
+            margin: 4% 2% 4% 2%;
+            height: 60px;
+            width: 60px;
+            border-radius: 5px;
+            color: white;
+            display: flex;
+            align-items: center;
+            h2{
+                font-family: $font-SemiBold;
+                font-size: 1.7rem;
+            }
+        }
+        .not-wearing-mask-detection-footer{
+            padding: 3% 2% 3% 2%;
+            border: 1px solid #DDDDDD;
+            border-radius: 0px 0px 15px 15px ;
+            .mini-time-slot-card{
+                width: 70%;
+                border-radius: 5px;
+                text-align: center;
+                padding: 2% 0% 2% 0%;
+                background-color: #EAEDEF;
+            }
+        }
+    }
+    
+    
+}
