@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap';
 import HeaderView from '../Utilities/HeaderView';
 import FilterDropDown from '../Utilities/FilterDropDown';
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import MiniViewBtn from '../Utilities/MiniViewBtn';
 import {DateTimeToLocaleDateStringLeadZero} from '../../Provider';
 
@@ -76,7 +77,13 @@ function MainTimeLine(){
             </Row>
             <div className={"my-5 ml-2 upload-file-area"} onDrop={dropHandler} onDragOver={dragOverHandler} onDragLeave={dragLeaveHandler}>
                 
-                <img  className={"background-img-drop-file "+ dropClass} src="/img/Group 124.jpg" alt="drop-file-area" width="98%"></img>
+                <img  className={"background-img-drop-file "+ dropClass} src="/img/Rectangle.jpg" alt="drop-file-area" width="98%"></img>
+                <div className="img-drag-n-drop-one">
+                    <img src="/img/icons8-photo-gallery-96.png" alt="drag-n-drop-file"/>
+                </div>
+                <div className="img-drag-n-drop-two">
+                  <img src="/img/Drag and Drop.png" alt="drag-n-drop-file" ></img>
+                </div>
                 { previewUrl !== "" &&
                   <img className={"drop-img"} src={previewUrl} alt="drop-file-area" height="260px"></img>
                 }

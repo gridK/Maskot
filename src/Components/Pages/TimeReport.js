@@ -123,13 +123,6 @@ function TimeReport() {
         fetchmainAPI(pagenum) 
     }
 
-    function  setCurrentPage(pagenum) {
-        setPaginators({currentPage : pagenum });
-        console.log(pagenum)
-        console.log(Paginators)
-        // fetchlocationinspection(pagenum)
-        
-    }
     function setTimeFilter(value) {
         setSelectedTime(value)
         console.log(value)
@@ -156,7 +149,6 @@ function TimeReport() {
         fetchAPI()
         console.log("fetch all apis")
     }, [])
-
     return (
         <>
         { isLoaded &&
@@ -177,21 +169,23 @@ function TimeReport() {
                 index % 3 == 0 &&
                     <Row className="detection-result-container">
                         <Col md="4" className="temp">
-                            <DetectionResultCard  {...record}/>
+                            <DetectionResultCard date={currentDate} {...record}/>
                         </Col>
                         <Col md="4" className="temp">
-                            <DetectionResultCard  {...items[index+1]} />
+                            <DetectionResultCard  date={currentDate} {...items[index+1]} />
                         </Col>
                         <Col md="4" className="temp">
-                            <DetectionResultCard  {...items[index+2]}/>
+                            <DetectionResultCard date={currentDate} {...items[index+2]}/>
                         </Col>
                     </Row>
-            ))}
+            ))
+            }
             </div>  
-            
+            {items.length !== 0 &&
             <div className="pagination-view">
                 <Paginator setPage={number => setCurrentPage(number)} currentPage={Paginators.currentPage} totalPage={Paginators.totalPage} totalItem={Paginators.totalItem}/>
             </div>
+            }
         </Container>
         }
         </>

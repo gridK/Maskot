@@ -23,9 +23,9 @@ function MiniViewBtn(props) {
                     <h5>Search</h5>
                 </NavLink>
             :
-                <div className="mini-btn search-btn ">
-                    <h5 onClick={props.onClickEvent}>Search</h5>
-                </div>
+                <button className="mini-btn search-btn " onClick={props.onClickEvent}>
+                    <h5 >Search</h5>
+                </button>
             }
             </>
         }

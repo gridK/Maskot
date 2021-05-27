@@ -18,6 +18,7 @@ import {
 
 function TimeLine (){
     const  params  = useParams();
+    var page = params.page
     var current_day_string = params.date.replaceAll("-","/");
     var currentday = params.date.split("-")
     var rearrange_day = currentday[2] +"-" + currentday[1] +"-"+ currentday[0]
@@ -88,6 +89,7 @@ function TimeLine (){
                 detectedImageId: detectedimages
             }
         }
+        console.log(detectedimages)
         GetTimeLineInfo(params)
         .then(
             response => {
@@ -132,7 +134,12 @@ function TimeLine (){
         <>
         { isLoaded &&
         <Container fluid>
-            <HeaderView targetedImg={URL.createObjectURL(searchImg)} title="Timeline"  date={new_date_string} backToPreviousPath="/timeline/main" backToPreviousText="Back to insert photo" />
+            { page === "day" ?
+                <HeaderView targetedImg={URL.createObjectURL(searchImg)} title="Timeline"  date={new_date_string} backToPreviousPath="/main" backToPreviousText="Back to search" />
+                :
+                <HeaderView targetedImg={URL.createObjectURL(searchImg)} title="Timeline"  date={new_date_string} backToPreviousPath="/timeline/main" backToPreviousText="Back to insert photo" />
+            }
+            
             <h3 className="timeline-results">Found {items.data.length} Results</h3>
             <div className="horizontal-scroll-view">
                 { items.data.map( (record, index) => 
@@ -150,7 +157,7 @@ function TimeLine (){
                 </Col>
                 <Col lg={6}>
                     <TimelineDetailCard time={timelineInfo.time} location={timelineInfo.location} Maskvalue={additionalTimelineInfo.totalWithMask} UnMaskvalue={additionalTimelineInfo.totalWithoutMask}/>
-                    <TimelineWithoutMaskDetection />
+                    <TimelineWithoutMaskDetection withOutMaskFaceCoord={additionalTimelineInfo} currentNum={CarouselNumber.currentImage}/>
                 </Col>
             </Row>
             }

@@ -105,7 +105,8 @@
     border: 1px solid #DDDDDD;
     border-radius: 15px;
     .big-img-view{
-        width: 100%;
+        max-height: 200px;
+        max-width: 100%;
         border-radius: 15px 15px 0px 0px;
     }
     .not-wearing-mask-detection-detail{
@@ -114,6 +115,10 @@
             height: 60px;
             margin: 4% 2% 4% 2%;
             position: relative;
+            width: 60px;
+            img{
+                height: 100%;
+            }
             &:hover{
                 .img-result-overlay{
                     visibility: visible;

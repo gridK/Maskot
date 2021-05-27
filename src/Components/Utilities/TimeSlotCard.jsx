@@ -12,22 +12,22 @@ function TimeSlotCard(props) {
         <>{ props.currentTimeline === undefined ?
             <>
             { props.currentTimeLine === props.time ?
-                <div className="time-slot-card-active">
+                <button className="time-slot-card-active">
                     <h2>{props.time}</h2>
                     <h5>{props.location}</h5>
-                </div>
+                </button>
                 :
-                <div className="time-slot-card-grey" onClick={() => props.setTimeLine(props.detectedIds, props.time, props.location)}>
+                <button className="time-slot-card-grey" onClick={() => props.setTimeLine(props.detectedIds, props.time, props.location)}>
                     <h2>{props.time}</h2>
                     <h5>{props.location}</h5>
-                </div>
+                </button>
             }
             </>
             :
-            <div className="time-slot-card-grey" onClick={() => props.setTimeLine(props.detectedIds, props.time, props.location)}>
+            <button className="time-slot-card-grey" onClick={() => props.setTimeLine(props.detectedIds, props.time, props.location)}>
                 <h2>{props.time}</h2>
                 <h5>{props.location}</h5>
-            </div>
+            </button>
         }
         </>
     );
@@ -90,16 +90,19 @@ function TimelineDetailCard(props){
 }
 
 
-function TimelineWithoutMaskDetection(){
+function TimelineWithoutMaskDetection(props){
+    var baseUrl = 'https://e3dba7e0be57.ap.ngrok.io'
+    var imageUrl = props.withOutMaskFaceCoord.images[props.currentNum-1].imageUrl
     return (
         <div className="timeline-without-mask-detection">
             <h4 className="timeline-without-mask-title">Without Mask Detection Result</h4>
             <div className="horizontal-scroll-view">
-                <ImageView type="small" src="/img/Mask Group 36.png"/>
-                <ImageView type="small" src="/img/Mask Group 36.png"/>
-                <ImageView type="small" src="/img/Mask Group 36.png"/>
-                <ImageView type="small" src="/img/Mask Group 36.png"/>
-                <ImageView type="small" src="/img/Mask Group 36.png"/>
+                { props.withOutMaskFaceCoord.images[props.currentNum-1].withoutMaskedFaceCoords.map( record => {
+                    return(<ImageView type="small" 
+                        src={baseUrl+"/utils/crop-image?img="+imageUrl+"&coord="+record}/>);
+                })
+
+                }
             </div>
         </div>
     );
