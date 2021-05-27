@@ -31,6 +31,7 @@ function DetectionResultCardV1(props) {
 }
 
 function DetectionResultCard(props){
+    console.log(props)
     return(
         <div className="not-wearing-mask-detection-card">
             <ImageView type="big" src="/img/sample.png"/>

@@ -51,7 +51,7 @@ function GetDayReportInfo(params) {
 function GetTimeReportInfo(params) {
     switch(params.type){
         case "main":
-            return axios.get(baseUrl+`/dashboard/mask-transactions?date=${params.data.date}&startTime=${params.data.startTime}&dateFormat=${params.data.dateFormat}&endTime=${params.data.endTime}&page=${params.data.page}&pageSize=${params.data.pageSize}`)
+            return axios.get(baseUrl+`/dashboard/mask-transactions?date=${params.data.date}&startTime=${params.data.startTime}&dateFormat=${params.data.dateFormat}&endTime=${params.data.endTime}&page=${params.data.page}&pageSize=${params.data.pageSize}&locationId=${params.data.locationId}`)
         case "overview":
             return axios.get(baseUrl+`/dashboard/statistic-locations?date=${params.data.date}&dateFormat=${params.data.dateFormat}&time=${params.data.time}&locationId=${params.data.locationId}`)
         default:

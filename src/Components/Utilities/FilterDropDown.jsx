@@ -26,7 +26,7 @@ function FilterDropDown(props) {
             </Col>
             :
             <Col className="d-flex align-items-end" xl="auto">
-                    <MiniViewBtn type="search"/>
+                    <MiniViewBtn type="search" onClickEvent={props.onClickEvent}/>
             </Col>
         }
         </>
