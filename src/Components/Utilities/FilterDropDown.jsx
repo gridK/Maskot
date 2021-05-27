@@ -7,7 +7,7 @@ function FilterDropDown(props) {
     function selectFilter(event) {
         const value = event.target.value
         props.setFilter(value);
-
+        console.log(value)
     }
     
     return(

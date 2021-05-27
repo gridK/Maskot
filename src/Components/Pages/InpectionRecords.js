@@ -21,9 +21,9 @@ import {
 function InspectionRecords(){
     const  params  = useParams();
     var currentday = params.date.replaceAll("-","/");
-
-    const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [error, setError] = useState(null);
+    
     const [items, setItems] = useState([]);
     const [Paginators, setPaginators] = useState({
         currentPage : 1,
@@ -31,9 +31,48 @@ function InspectionRecords(){
         totalItem: 1,
     });
     const [ selectedYear , setSelectedYear] = useState(2021)
-    const [ selectedMonth , setSelectedMonth] = useState(2021)
-    var YearSelectList = [2021,2020,2019]
-    var MonthSelectList = ['May','April','March','February']
+    const [ selectedMonth , setSelectedMonth] = useState("")
+    const [ yearSelectList, setYearSelectList] = useState([])
+    const [ monthSelectList, setMonthSelectList] = useState([])
+    // var MonthSelectList = ['May','April','March','February']
+
+    const fetchYearFilter = () => {
+        let params = {
+            type: "get-filter"
+        }
+        return GetInspectionRecordInfo(params)
+        .then(
+            async response => {
+                var years = []
+                response.data.data.map( record => 
+                    years.push(record.year)
+                )
+                await setYearSelectList(years)
+                
+            }
+        )
+    }
+
+    const fetchMonthFilter = (year) => {
+        let params = {
+            type: "get-filter"
+        }
+        return GetInspectionRecordInfo(params)
+        .then(
+            async response => {
+                var selectedyear = response.data.data.filter( record => 
+                    record.year === year
+                )
+                const result = []
+                selectedyear[0].month.map(m => {
+                    result.push(m.name)
+                })
+                console.log(result)
+                
+                await setMonthSelectList(result)
+            }
+        )
+    }
     const fetchmainAPI = (pagenum) => {
         let params = {
             type: "main",
@@ -51,20 +90,33 @@ function InspectionRecords(){
                 const mainData = allData[0].data.data.items
                 const {totalPage, totalItem} = allData[0].data.data
                 console.log(mainData);
+                console.log(isLoaded)
                 setPaginators(prev => {
                     return ({ ...prev,
                     totalPage: totalPage,
                     totalItem: totalItem});
                 })
-                setItems(mainData)
-                setIsLoaded(true)
+                setItems(mainData);
+                
             })
+            
         )
 
     }
 
     const fetchAPI = () =>{
-        fetchmainAPI(1)
+        var filter = fetchYearFilter()
+        var M_filter = fetchMonthFilter(2021)
+        axios.all([filter,M_filter])
+        .then(
+            () =>{
+                fetchmainAPI(1)
+                setIsLoaded(true)
+            }
+        )
+        
+        
+        
     }
 
     function  setCurrentPage(pagenum) {
@@ -76,6 +128,7 @@ function InspectionRecords(){
     }
     function setYearFilter(value) {
         setSelectedYear(value)
+        fetchMonthFilter(value)
         console.log(value)
     }
     function setMonthFilter(value) {
@@ -93,8 +146,8 @@ function InspectionRecords(){
             <HeaderView pageNum={2} date=" "/>
             <div className="inpection-record-view-filter-group">
                 <Row>
-                    <FilterDropDown setFilter={value => setYearFilter(value)} selectList={YearSelectList} type="filter" filterName="Year"/>
-                    <FilterDropDown setFilter={value => setMonthFilter(value)} selectList={MonthSelectList} type="filter" filterName="Month"/>
+                    <FilterDropDown setFilter={value => setYearFilter(value)} selectList={yearSelectList} type="filter" filterName="Year"/>
+                    <FilterDropDown setFilter={value => setMonthFilter(value)} selectList={monthSelectList} type="filter" filterName="Month"/>
                     <FilterDropDown />
                 </Row>
             </div>

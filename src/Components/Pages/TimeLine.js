@@ -18,6 +18,7 @@ import {
 
 function TimeLine (){
     const  params  = useParams();
+    var current_day_string = params.date.replaceAll("-","/");
     var currentday = params.date.split("-")
     var rearrange_day = currentday[2] +"-" + currentday[1] +"-"+ currentday[0]
     var new_date = new Date(rearrange_day)
@@ -67,7 +68,8 @@ function TimeLine (){
         let params = {
             type: "main",
             data: {
-                image: bodyFormData
+                image: bodyFormData,
+                date: current_day_string
             }
         }
         GetTimeLineInfo(params)
@@ -98,8 +100,8 @@ function TimeLine (){
                 
             }
         ).then(
-            () => {
-                return setTimelineInfo({
+            async() => {
+                return await setTimelineInfo({
                     time: time,
                     location: location
                 })

@@ -9,6 +9,7 @@ import FilterDropDown from '../Utilities/FilterDropDown';
 import '../../Styles/maskot-styling.scss';
 import HeaderView from '../Utilities/HeaderView';
 import axios from 'axios';
+import Paginator from '../Utilities/Pagination';
 
 import {
     useParams
@@ -53,6 +54,13 @@ function TimeReport() {
         
     }
 
+    function  setCurrentPage(pagenum) {
+        setPaginators({currentPage : pagenum });
+        console.log(pagenum)
+        console.log(Paginators)
+        // fetchlocationinspection(pagenum)
+        
+    }
     function setTimeFilter(value) {
         setSelectedTime(value)
         console.log(value)
@@ -109,6 +117,9 @@ function TimeReport() {
                     <DetectionResultCard />
                 </Col>
             </Row>
+            <div className="pagination-view">
+                <Paginator setPage={number => setCurrentPage(number)} currentPage={Paginators.currentPage} totalPage={Paginators.totalPage} totalItem={Paginators.totalItem}/>
+            </div>
         </Container>
         }
         </>
