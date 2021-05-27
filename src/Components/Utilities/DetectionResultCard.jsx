@@ -30,11 +30,42 @@ function DetectionResultCardV1(props) {
     );
 }
 
+// function DetectionResultCard(props){
+//     console.log(props)
+//     return(
+//         <div className="not-wearing-mask-detection-card">
+//             <ImageView type="big" src="/img/sample.png"/>
+//             <div className="not-wearing-mask-detection-detail">
+//                 <Row className="ml-2" noGutters={true}>
+//                     <ImageView type="small-result" src="/img/Mask Group 36.png"/>
+//                     <ImageView type="small-result" src="/img/Mask Group 36.png"/>
+//                     <ImageView type="small-result" src="/img/Mask Group 36.png"/>
+//                     <ImageView type="more-img" imgNum={5}/>
+//                 </Row>
+//                 <div className="not-wearing-mask-detection-footer">
+//                     <Row >
+//                         <Col md="8" className="ml-1">
+//                             <div className="mini-time-slot-card">
+//                                 10:00 HRS.
+//                             </div>
+
+//                         </Col>
+//                         <img className="ml-3 mr-3" src="/img/Icon awesome-expand.svg" ></img>
+//                         <img src="/img/Icon awesome-trash.svg" ></img>
+
+//                     </Row>
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// }
+
 function DetectionResultCard(props){
     console.log(props)
     return(
+        props.imageUrl ?
         <div className="not-wearing-mask-detection-card">
-            <ImageView type="big" src="/img/sample.png"/>
+            <ImageView type="big" src={props.imageUrl}/>
             <div className="not-wearing-mask-detection-detail">
                 <Row className="ml-2" noGutters={true}>
                     <ImageView type="small-result" src="/img/Mask Group 36.png"/>
@@ -46,7 +77,7 @@ function DetectionResultCard(props){
                     <Row >
                         <Col md="8" className="ml-1">
                             <div className="mini-time-slot-card">
-                                10:00 HRS.
+                                {props.capturedTime} HRS.
                             </div>
 
                         </Col>
@@ -56,8 +87,7 @@ function DetectionResultCard(props){
                     </Row>
                 </div>
             </div>
-        </div>
+        </div> : <></>
     );
 }
-
 export default DetectionResultCard;
