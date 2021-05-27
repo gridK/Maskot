@@ -3,18 +3,24 @@ import Col from 'react-bootstrap/Col';
 import MiniViewBtn from '../Utilities/MiniViewBtn';
 
 function FilterDropDown(props) {
+
+    function selectFilter(event) {
+        const value = event.target.value
+        props.setFilter(value);
+
+    }
+    
     return(
         <>
         { props.type == "filter"?
             <Col xl="auto">
                 <h5 className="dropdown-label">{props.filterName}</h5>
                 <span className="custom-dropdown ">
-                    <select >
-                        <option>All</option>
-                        <option>The Great Gatsby</option>  
-                        <option>V for Vendetta</option>
-                        <option>The Wolf of Wallstreet</option>
-                        <option>Quantum of Solace</option>
+                    <select onChange={selectFilter} >
+                        { props.selectList.map( option => 
+                                <option value={option}>{option}</option>
+                            )
+                        }
                     </select>
                 </span>
             </Col>

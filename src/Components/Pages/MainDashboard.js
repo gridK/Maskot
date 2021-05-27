@@ -54,8 +54,8 @@ function MainDashBoard() {
         totalPage: 1,
         totalItem: 1,
     });
-    var startDate = "03/05/2021";
-    var endDate = "07/05/2021";
+    var startDate = "16/05/2021";
+    var endDate = "26/05/2021";
     const fetchlocationinspection = (pagenum) => {
         var currentDate = new Date()
         let params = {
@@ -66,6 +66,7 @@ function MainDashBoard() {
                 date: DateTimeToLocaleDateStringLeadZero(currentDate),
             }
         }
+        console.log(params)
         GetMainDashBoardInfo(params)
         .then(
             response => {
@@ -77,6 +78,7 @@ function MainDashBoard() {
                     totalItem: totalItem});
                 })
                 setRecords(locationData)
+                console.log(response)
                 console.log("fetch location api")
             }
         )

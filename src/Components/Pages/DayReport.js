@@ -148,22 +148,25 @@ function DayReport() {
             <div className="d-flex justify-content-end mr-4 mb-2">
                 <img src="/img/Heat_Map_Metered.jpg" alt="heat_metered"></img>
             </div>
-            <HeatMap data={heatmap} startTime={10} endTime={21}/>
+            <HeatMap data={heatmap} startTime={10} endTime={21} date={currentDate}/>
             <div>
                 <h1 className="main-sub-title main-temp-margin">Location Inspection</h1>
-                <FullWidthCard 
-                    label_A="Floor 1" 
-                    value_A="Main Atrium" 
-                    icon="/img/icons8-protection-mask-128.svg" 
-                    iconUnit="/img/icons8-person-64.svg"
-                    label_B="Total With Mask" 
-                    value_B="1,560" 
-                    label_C="Total Without Mask" 
-                    value_C="230" 
-                    label_D="Rate" 
-                    value_D="14.74%" 
-                    path="/inspection"
-                    />
+                { records.map( record => 
+                    <FullWidthCard 
+                        label_A={"Floor "+record.floorNumber}
+                        value_A={record.locationNameEn}
+                        icon="/img/icons8-protection-mask-128.svg" 
+                        iconUnit="/img/icons8-person-64.svg"
+                        label_B="Total With Mask" 
+                        value_B={record.withMask} 
+                        label_C="Total Without Mask" 
+                        value_C={record.withoutMask} 
+                        label_D="Without Mask Ratio" 
+                        value_D={(record.withoutMaskRate*100).toFixed(2) +" %"}
+                        path={"/main/inspection"}
+                        />
+                )
+                }
                 
             </div>
             <div className="pagination-view">

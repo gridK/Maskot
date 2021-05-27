@@ -43,13 +43,13 @@ function App({routes}){
                     <Route path="/main/dayreport/:date">
                         <DayReport /> 
                     </Route>
-                    <Route path="/main/timereport">
+                    <Route path="/main/timereport/:locationId/:locationNamEn/:date/:slot">
                         <TimeReport /> 
                     </Route>
                     <Route path="/timeline/main">
                         <MainTimeLine />
                     </Route>
-                    <Route path="/timeline/report">
+                    <Route path="/timeline/report/:date">
                         <TimeLine />
                     </Route>
                     <Route path="/main/timeline/report">

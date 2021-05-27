@@ -53,7 +53,7 @@ const options = {
 export default function InspectionBarChart(props) {
   
   const bar_labels = props.inspectionRecords.map( record => record.date);
-  var temp_data = props.inspectionRecords.map( record => record.withoutMaskRate/100 );
+  var temp_data = props.inspectionRecords.map( record => record.withoutMaskRate );
   const bar_data = {
     labels: bar_labels,
     datasets: [{

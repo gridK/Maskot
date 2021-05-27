@@ -1,4 +1,4 @@
-import React from 'react';
+import React,  { useState , useEffect, useMemo} from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -8,47 +8,154 @@ import HeaderView from '../Utilities/HeaderView';
 import TimeSlotCard, {TimelineDetailCard, TimelineWithoutMaskDetection} from '../Utilities/TimeSlotCard';
 import ImageView from '../Utilities/ImageView';
 import CarouselControl from '../Utilities/CarouselControl';
-
-
+import {DateTimeToFullString} from '../../Provider';
+import {GetTimeLineInfo} from '../../UrlDict';
+import fs from 'fs'
+import {
+    useParams
+  } from "react-router-dom";
 
 
 function TimeLine (){
-    return (
-        <Container fluid>
-            {/* <Row>
-                <Col lg="9"> */}
-            <HeaderView title="Timeline"  backToPreviousPath="/main/timereport" backToPreviousText="Back to Search" />
-                {/* </Col>
-                <Col lg="3">
-                    <TargetedPicture />
-                </Col>
+    const  params  = useParams();
+    var currentday = params.date.split("-")
+    var rearrange_day = currentday[2] +"-" + currentday[1] +"-"+ currentday[0]
+    var new_date = new Date(rearrange_day)
+    
+    var new_date_string = DateTimeToFullString(new_date)
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [items, setItems] = useState([]);
+    const [CarouselNumber, setCarouselNumber] = useState({
+        currentImage : 1,
+        totalImages: 1
+    });
+    const [detectedImages, setDetectedImages] = useState([])
+    const [detectedResult, setDetectedResult] = useState([])
+    const [timelineInfo, setTimelineInfo] = useState({
+        time: "",
+        location: ""
+    })
+    const [additionalTimelineInfo, setAdditionalTimelineInfo] = useState([])
+    const [activeSlotId, setActiveSlotId] = useState(0)
 
-            </Row> */}
-            <h3 className="timeline-results">Found 20 Results</h3>
+
+    function dataURItoBlob(dataURI) {
+        // convert base64 to raw binary data held in a string
+        var byteString = atob(dataURI.split(',')[1]);
+    
+        // separate out the mime component
+        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    
+        // write the bytes of the string to an ArrayBuffer
+        var arrayBuffer = new ArrayBuffer(byteString.length);
+        var _ia = new Uint8Array(arrayBuffer);
+        for (var i = 0; i < byteString.length; i++) {
+            _ia[i] = byteString.charCodeAt(i);
+        }
+    
+        var dataView = new DataView(arrayBuffer);
+        var blob = new Blob([dataView], { type: mimeString });
+        return blob;
+    }
+
+    var searchImg = dataURItoBlob(localStorage.getItem("file"))
+    const fetchAPI = () => {
+        var bodyFormData = new FormData();
+        bodyFormData.set('image',searchImg)
+        console.log(searchImg)
+        let params = {
+            type: "main",
+            data: {
+                image: bodyFormData
+            }
+        }
+        GetTimeLineInfo(params)
+        .then(
+            response =>{
+                setItems(response.data)
+                console.log(response.data)
+                setIsLoaded(true)
+            }
+        )
+    }
+
+    const fetchDetectedImages = (detectedimages, time, location) => {
+        let params = {
+            type: "timeline-info",
+            data: {
+                detectedImageId: detectedimages
+            }
+        }
+        GetTimeLineInfo(params)
+        .then(
+            response => {
+                
+                setAdditionalTimelineInfo(response.data.data)
+                setDetectedResult(response.data.data.images)
+                console.log("fetch detected images api")
+                console.log(response.data.data)
+                
+            }
+        ).then(
+            () => {
+                return setTimelineInfo({
+                    time: time,
+                    location: location
+                })
+            }
+        )
+        .then(
+            () => {
+                console.log(timelineInfo)
+                setDetectedImages(detectedimages)
+            }
+         )
+    }
+
+    function setDetectedImageList(detectedimages, time, location) {
+        fetchDetectedImages(detectedimages, time, location)
+        
+        console.log(detectedResult[CarouselNumber.currentImage -1])
+        
+    }
+
+    useEffect( () => {
+        fetchAPI()
+        console.log("fetch all apis")
+    }, [])
+
+
+
+    return (
+        <>
+        { isLoaded &&
+        <Container fluid>
+            <HeaderView targetedImg={URL.createObjectURL(searchImg)} title="Timeline"  date={new_date_string} backToPreviousPath="/timeline/main" backToPreviousText="Back to insert photo" />
+            <h3 className="timeline-results">Found {items.data.length} Results</h3>
             <div className="horizontal-scroll-view">
-                <TimeSlotCard time="09:00" location="Main Atrium"/>
-                <TimeSlotCard time="10:00" location="Main Atrium" isActive={true}/>
-                <TimeSlotCard time="09:00" location="Main Atrium"/>
-                <TimeSlotCard time="09:00" location="Main Atrium"/>
-                <TimeSlotCard time="09:00" location="Main Atrium"/>
-                <TimeSlotCard time="09:00" location="Main Atrium"/>
-                <TimeSlotCard time="09:00" location="Main Atrium"/>
-                <TimeSlotCard time="09:00" location="Main Atrium"/>
-                <TimeSlotCard time="09:00" location="Main Atrium"/>
-                <TimeSlotCard time="09:00" location="Main Atrium"/>
-                <TimeSlotCard time="09:00" location="Main Atrium"/>
-            </div>
+                { items.data.map( (record, index) => 
+                    <TimeSlotCard currentTimeLine={timelineInfo} setTimeLine={(detectedimageIds, time, location) => setDetectedImageList(detectedimageIds, time, location)} time={record.capturedTime} location={record.locationNameEn} detectedIds={record.detectedImageId}/>
+                )
+                }
+            </div> 
+            { detectedImages.length !== 0 &&
             <Row className="timeline-inspection-view" noGutters={true}>
                 <Col lg={6} >
-                    <ImageView type="big" src="/img/Group 184.png"/>
+                    <div className="mx-auto d-flex justify-content-center">
+                        <ImageView type="big" src={detectedResult[CarouselNumber.currentImage -1].imageUrl}/>
+                    </div>
                     <CarouselControl />
                 </Col>
                 <Col lg={6}>
-                    <TimelineDetailCard time="10:00" location="Main Atrium" Maskvalue={35} UnMaskvalue={20}/>
+                    <TimelineDetailCard time={timelineInfo.time} location={timelineInfo.location} Maskvalue={additionalTimelineInfo.totalWithMask} UnMaskvalue={additionalTimelineInfo.totalWithoutMask}/>
                     <TimelineWithoutMaskDetection />
                 </Col>
             </Row>
+            }
         </Container>
+        }
+        </>
     );
 }
 

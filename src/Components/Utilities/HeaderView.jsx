@@ -9,7 +9,7 @@ import {DateTimeToFullString, DateTimeToLocaleDateStringLeadZero} from '../../Pr
 function TargetedPicture(props){
     return (
         <div className="target-picture-box">
-                <img src="/img/Mask Group 36.png" alt="target-pic" className="target-picture-img"/>
+                <img src={props.targetedImg} alt="target-pic" className="target-picture-img"/>
                 <h3 className="target-picture-text">Target Picture</h3>
         </div>
     );
@@ -22,9 +22,11 @@ function HeaderView(props){
             <Row>
                 <Col lg="8">
                 { props.backToPreviousPath !== undefined &&
-                    <h3 className="back-to-previous">{'< '+props.backToPreviousText}</h3>
+                    <NavLink to={props.backToPreviousPath}>
+                        <h3 className="back-to-previous">{'< '+props.backToPreviousText}</h3>
+                    </NavLink>
                 }
-                { props.title !== "Timeline" &&
+                { (props.title !== "Timeline" && props.backToPreviousPath === undefined) &&
                 <Breadcrumb >
                     <Breadcrumb.Item >
                         <NavLink to="/main/" className="inactive">
@@ -58,7 +60,7 @@ function HeaderView(props){
                         { props.page === "time" ?
                             <>
                             <img src="/img/icons8-clock.svg" className="header-view-icon" alt="time"></img>
-                            <h5>10:00 HRS.</h5>
+                            <h5>{props.time} HRS.</h5>
                             </>
                         :
                             <></>
@@ -70,7 +72,7 @@ function HeaderView(props){
                 </Col>
                 <Col className="d-flex align-items-end">
                     { props.title === "Timeline" &&
-                        <TargetedPicture />
+                        <TargetedPicture targetedImg={props.targetedImg}/>
                     }
                 </Col>
 

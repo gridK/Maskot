@@ -5,25 +5,34 @@ import ImageView from './ImageView';
 
 
 function TimeSlotCard(props) {
+
     return (
-        <>
-        { props.isActive ?
-            <div className="time-slot-card-active">
+        <>{ props.currentTimeline !== undefined ?
+            <>
+            { props.currentTimeline.time === props.time ?
+                <div className="time-slot-card-active">
+                    <h2>{props.time}</h2>
+                    <h5>{props.location}</h5>
+                </div>
+                :
+                <div className="time-slot-card-grey" onClick={() => props.setTimeLine(props.detectedIds, props.time, props.location)}>
+                    <h2>{props.time}</h2>
+                    <h5>{props.location}</h5>
+                </div>
+            }
+            </>
+            :
+            <div className="time-slot-card-grey" onClick={() => props.setTimeLine(props.detectedIds, props.time, props.location)}>
                 <h2>{props.time}</h2>
                 <h5>{props.location}</h5>
             </div>
-          :
-          <div className="time-slot-card-grey">
-            <h2>{props.time}</h2>
-            <h5>{props.location}</h5>
-        </div>
         }
         </>
     );
 }
 
 function TimelineDetailCard(props){
-    return (
+    return (    
         <div className="timeline-detail-card">
             <div className="timeline-detail-card-top">
                 <h1>

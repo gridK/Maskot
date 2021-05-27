@@ -5,8 +5,8 @@ import {NavLink} from 'react-router-dom'
 const navList = [
     {img: '/img/blank-icon.svg',item: "Dashboard", pages: '/main'},
     {img: '/img/blank-icon.svg',item:"Timeline" , pages: '/timeline/main'},
-    {img: '/img/blank-icon.svg',item:"Temi Overview" , pages: '/temi'},
-    {img: '/img/blank-icon.svg',item:"Setting" , pages: '/setting'}
+    // {img: '/img/blank-icon.svg',item:"Temi Overview" , pages: '/temi'},
+    // {img: '/img/blank-icon.svg',item:"Setting" , pages: '/setting'}
 ]
 
 

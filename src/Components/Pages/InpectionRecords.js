@@ -30,7 +30,10 @@ function InspectionRecords(){
         totalPage: 1,
         totalItem: 1,
     });
-
+    const [ selectedYear , setSelectedYear] = useState(2021)
+    const [ selectedMonth , setSelectedMonth] = useState(2021)
+    var YearSelectList = [2021,2020,2019]
+    var MonthSelectList = ['May','April','March','February']
     const fetchmainAPI = (pagenum) => {
         let params = {
             type: "main",
@@ -71,6 +74,14 @@ function InspectionRecords(){
         fetchmainAPI(pagenum)
         
     }
+    function setYearFilter(value) {
+        setSelectedYear(value)
+        console.log(value)
+    }
+    function setMonthFilter(value) {
+        setSelectedMonth(value)
+        console.log(value)
+    }
     useEffect( () => {
         fetchAPI()
     }, [])
@@ -82,8 +93,8 @@ function InspectionRecords(){
             <HeaderView pageNum={2} date=" "/>
             <div className="inpection-record-view-filter-group">
                 <Row>
-                    <FilterDropDown type="filter" filterName="Year"/>
-                    <FilterDropDown type="filter" filterName="Month"/>
+                    <FilterDropDown setFilter={value => setYearFilter(value)} selectList={YearSelectList} type="filter" filterName="Year"/>
+                    <FilterDropDown setFilter={value => setMonthFilter(value)} selectList={MonthSelectList} type="filter" filterName="Month"/>
                     <FilterDropDown />
                 </Row>
             </div>

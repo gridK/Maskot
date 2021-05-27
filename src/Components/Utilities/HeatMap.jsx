@@ -31,11 +31,12 @@ function HeatColor(value){
 
 function HeatMap(props) {
     const heat_data = props.data.data.heatmap
+    console.log(heat_data)
     var time_slot = []
     for (var i = props.startTime ; i <= props.endTime; i++){
         time_slot.push(i)
     }
-    console.log(heat_data[0].datas.filter(x => x.time === "10:00")[0].time)
+    // console.log(heat_data[0].datas.filter(x => x.time === "10:00")[0].time)
 
 
 
@@ -69,17 +70,19 @@ function HeatMap(props) {
                         <Row>
                             {
                                 time_slot.map(slot => 
-                                    <NavLink to="/main/timereport" className="heat-map-box ">
+                                    <>
                                         { undefined !== location.datas.filter(x => x.time === slot+":00")[0] ?
-                                            <div class="heat-map-inner-box" style={HeatColor(location.datas.filter(x => x.time === slot+":00")[0].ratio)}>
-                                            </div>
+                                            <NavLink to={"/main/timereport/"+location.locationId+"/"+location.locationNameEn+"/"+props.date+"/"+slot+":00"} className="heat-map-box ">
+                                                <div class="heat-map-inner-box" style={HeatColor(location.datas.filter(x => x.time === slot+":00")[0].ratio)}>
+                                                </div>
+                                                <div class="heat-map-inner-box-overlay "></div>
+                                                <img src="/img/visibility-white.svg" className="heat-map-inner-box-overlay-icon" alt="see"></img>
+                                            </NavLink>
                                             :
-                                            <div class="heat-map-inner-box" style={HeatColor(0)}>
+                                            <div class="heat-map-inner-box" style={{backgroundColor:'#F5f4f2'}} >
                                             </div>
                                         }
-                                        <div class="heat-map-inner-box-overlay "></div>
-                                        <img src="/img/visibility-white.svg" className="heat-map-inner-box-overlay-icon" alt="see"></img>
-                                    </NavLink>
+                                    </>
                                 )
                             }
                         </Row>
