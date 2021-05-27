@@ -78,35 +78,35 @@ function TimeReport() {
             </div>
             <Row className="detection-result-container">
                 <Col md="4" className="temp">
-                    <DetectionResultCard></DetectionResultCard>
+                    <DetectionResultCard />
                 </Col>
                 <Col md="4" className="temp">
-                    <DetectionResultCard></DetectionResultCard>
+                    <DetectionResultCard />
                 </Col>
                 <Col md="4" className="temp">
-                    <DetectionResultCard></DetectionResultCard>
-                </Col>
-            </Row>
-            <Row className="detection-result-container">
-                <Col md="4" className="temp">
-                    <DetectionResultCard></DetectionResultCard>
-                </Col>
-                <Col md="4" className="temp">
-                    <DetectionResultCard></DetectionResultCard>
-                </Col>
-                <Col md="4" className="temp">
-                    <DetectionResultCard></DetectionResultCard>
+                    <DetectionResultCard />
                 </Col>
             </Row>
             <Row className="detection-result-container">
                 <Col md="4" className="temp">
-                    <DetectionResultCard></DetectionResultCard>
+                    <DetectionResultCard />
                 </Col>
                 <Col md="4" className="temp">
-                    <DetectionResultCard></DetectionResultCard>
+                    <DetectionResultCard />
                 </Col>
                 <Col md="4" className="temp">
-                    <DetectionResultCard></DetectionResultCard>
+                    <DetectionResultCard /> 
+                </Col>
+            </Row>
+            <Row className="detection-result-container">
+                <Col md="4" className="temp">
+                    <DetectionResultCard />
+                </Col>
+                <Col md="4" className="temp">
+                    <DetectionResultCard />
+                </Col>
+                <Col md="4" className="temp">
+                    <DetectionResultCard />
                 </Col>
             </Row>
         </Container>
