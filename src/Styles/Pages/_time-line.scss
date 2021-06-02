@@ -17,7 +17,8 @@
 .timeline-inspection-view{
     margin-top: 5%;
     .big-img-view{
-        height: 380px;
+        max-height: 300px;
+        max-width: 100%;
         border-radius: 10px;
     }
 }
@@ -67,11 +68,25 @@
     }
     .drop-img{
         position: absolute;
-        bottom: 0;
         left: 40%;
+        top: 20px;
         z-index: 10;
+        max-height: 250px;
     }
-    
+    .img-drag-n-drop-one{
+        height: 100%;
+        position: absolute;
+        left: 40%;
+        top: 70px;
+        z-index: 5;
+    }
+    .img-drag-n-drop-two{
+        height: 100%;
+        position: absolute;
+        left: 37%;
+        top: 180px;
+        z-index: 5;
+    }
 }
 
 .main-timeline-footer{

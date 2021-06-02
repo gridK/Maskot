@@ -39,7 +39,7 @@ function FullWidthCard(props) {
                 </Col>
                 <Col  xl="2-5">
                     <Row className="full-width-inner-padding">
-                        <img src={props.icon} className="mini-card-icon"></img>
+                        <img src={props.iconNon} className="mini-card-icon not-masked"></img>
                         <div className="mini-card-text">
                             <p >{props.label_C}</p>
                             <Row className="mini-card-value-text" noGutters="true">

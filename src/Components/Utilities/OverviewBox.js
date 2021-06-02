@@ -46,10 +46,10 @@ function OverviewBox(props){
                             <MiniCardDark  label="Total With Mask" value={props.data.totalWithMask} icon="/img/icons8-protection-mask-128.svg" iconUnit="/img/icons8-person-64.svg"/> 
                         </Col>
                         <Col md="auto">
-                            <MiniCardDark label="Total Without Mask" value={props.data.totalWithoutMask} icon="/img/icons8-protection-mask-128.svg" iconUnit="/img/icons8-person-64.svg"/> 
+                            <MiniCardDark label="Total Without Mask" value={props.data.totalWithoutMask} icon="/img/Group 22@2x.png" iconUnit="/img/icons8-person-64.svg"/> 
                         </Col>
                         <Col md="auto">
-                            <MiniCardDark  label="Rate" value={(props.data.rate*100).toFixed(2)+" %"} icon="/img/icons8-protection-mask-128.svg" iconUnit="/img/icons8-person-64.svg"/> 
+                            <MiniCardDark  label="Rate" value={(props.data.rate*100).toFixed(2)+" %"} icon="/img/ratio.svg" iconUnit="/img/icons8-person-64.svg"/> 
                         </Col>
                     </Row>
                 </Col>

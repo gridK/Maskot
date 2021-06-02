@@ -18,6 +18,8 @@ import {
 
 function TimeLine (){
     const  params  = useParams();
+    var page = params.page
+    var current_day_string = params.date.replaceAll("-","/");
     var currentday = params.date.split("-")
     var rearrange_day = currentday[2] +"-" + currentday[1] +"-"+ currentday[0]
     var new_date = new Date(rearrange_day)
@@ -37,7 +39,6 @@ function TimeLine (){
         location: ""
     })
     const [additionalTimelineInfo, setAdditionalTimelineInfo] = useState([])
-    const [activeSlotId, setActiveSlotId] = useState(0)
 
 
     function dataURItoBlob(dataURI) {
@@ -67,7 +68,8 @@ function TimeLine (){
         let params = {
             type: "main",
             data: {
-                image: bodyFormData
+                image: bodyFormData,
+                date: current_day_string
             }
         }
         GetTimeLineInfo(params)
@@ -80,44 +82,45 @@ function TimeLine (){
         )
     }
 
-    const fetchDetectedImages = (detectedimages, time, location) => {
+    const fetchDetectedImages = (detectedimages) => {
         let params = {
             type: "timeline-info",
             data: {
                 detectedImageId: detectedimages
             }
         }
+        console.log(detectedimages)
         GetTimeLineInfo(params)
         .then(
             response => {
-                
                 setAdditionalTimelineInfo(response.data.data)
                 setDetectedResult(response.data.data.images)
                 console.log("fetch detected images api")
                 console.log(response.data.data)
-                
-            }
-        ).then(
-            () => {
-                return setTimelineInfo({
-                    time: time,
-                    location: location
+                setDetectedImages(detectedimages)
+                setCarouselNumber({
+                    currentImage: 1,
+                    totalImages: detectedimages.length
                 })
             }
         )
-        .then(
-            () => {
-                console.log(timelineInfo)
-                setDetectedImages(detectedimages)
-            }
-         )
     }
 
     function setDetectedImageList(detectedimages, time, location) {
-        fetchDetectedImages(detectedimages, time, location)
+        setTimelineInfo({
+            time: time,
+            location: location
+        })
+        fetchDetectedImages(detectedimages)
         
-        console.log(detectedResult[CarouselNumber.currentImage -1])
-        
+    }
+
+    function setCarouselView(num) {
+        setCarouselNumber(prev => {
+            return ({...prev,
+                currentImage: num
+            })
+        })
     }
 
     useEffect( () => {
@@ -131,11 +134,16 @@ function TimeLine (){
         <>
         { isLoaded &&
         <Container fluid>
-            <HeaderView targetedImg={URL.createObjectURL(searchImg)} title="Timeline"  date={new_date_string} backToPreviousPath="/timeline/main" backToPreviousText="Back to insert photo" />
+            { page === "day" ?
+                <HeaderView targetedImg={URL.createObjectURL(searchImg)} title="Timeline"  date={new_date_string} backToPreviousPath="/main" backToPreviousText="Back to search" />
+                :
+                <HeaderView targetedImg={URL.createObjectURL(searchImg)} title="Timeline"  date={new_date_string} backToPreviousPath="/timeline/main" backToPreviousText="Back to insert photo" />
+            }
+            
             <h3 className="timeline-results">Found {items.data.length} Results</h3>
             <div className="horizontal-scroll-view">
                 { items.data.map( (record, index) => 
-                    <TimeSlotCard currentTimeLine={timelineInfo} setTimeLine={(detectedimageIds, time, location) => setDetectedImageList(detectedimageIds, time, location)} time={record.capturedTime} location={record.locationNameEn} detectedIds={record.detectedImageId}/>
+                    <TimeSlotCard currentTimeLine={timelineInfo.time} setTimeLine={(detectedimageIds, time, location) => setDetectedImageList(detectedimageIds, time, location)} time={record.capturedTime} location={record.locationNameEn} detectedIds={record.detectedImageId}/>
                 )
                 }
             </div> 
@@ -145,11 +153,11 @@ function TimeLine (){
                     <div className="mx-auto d-flex justify-content-center">
                         <ImageView type="big" src={detectedResult[CarouselNumber.currentImage -1].imageUrl}/>
                     </div>
-                    <CarouselControl />
+                    <CarouselControl setImgView={(num) => setCarouselView(num)} currentNum= {CarouselNumber.currentImage} totalNum= {CarouselNumber.totalImages}/>
                 </Col>
                 <Col lg={6}>
                     <TimelineDetailCard time={timelineInfo.time} location={timelineInfo.location} Maskvalue={additionalTimelineInfo.totalWithMask} UnMaskvalue={additionalTimelineInfo.totalWithoutMask}/>
-                    <TimelineWithoutMaskDetection />
+                    <TimelineWithoutMaskDetection withOutMaskFaceCoord={additionalTimelineInfo} currentNum={CarouselNumber.currentImage}/>
                 </Col>
             </Row>
             }

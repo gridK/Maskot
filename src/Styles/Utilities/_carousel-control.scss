@@ -7,12 +7,18 @@
         height: 30px;
         width: 30px;
         margin-right: 2%;
+        cursor:pointer;
     }
     .customed-carousel-controller-next{
         height: 30px;
         width: 30px;
         transform: rotate(180deg);
         margin-left: 2%;
+        cursor:pointer;
+        &.disable{
+            cursor:move;
+            transform: rotate(0);
+        }
     }
     .customed-carousel-control-panel{
         width: 20%;

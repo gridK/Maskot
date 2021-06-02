@@ -61,17 +61,31 @@ function DetectionResultCardV1(props) {
 // }
 
 function DetectionResultCard(props){
+    var baseUrl = 'https://e3dba7e0be57.ap.ngrok.io'
     console.log(props)
     return(
         props.imageUrl ?
         <div className="not-wearing-mask-detection-card">
-            <ImageView type="big" src={props.imageUrl}/>
+            <div className="mx-auto d-flex justify-content-center">
+                <ImageView type="big" src={props.imageUrl}/>
+            </div>
             <div className="not-wearing-mask-detection-detail">
                 <Row className="ml-2" noGutters={true}>
-                    <ImageView type="small-result" src="/img/Mask Group 36.png"/>
-                    <ImageView type="small-result" src="/img/Mask Group 36.png"/>
-                    <ImageView type="small-result" src="/img/Mask Group 36.png"/>
-                    <ImageView type="more-img" imgNum={5}/>
+                    { props.datas.map( (coord, index) => {
+                        if(index <= 3) {
+                            return(
+                                <ImageView
+                                date={props.date} 
+                                type="small-result" 
+                                src={baseUrl+"/utils/crop-image?img="+props.imageUrl+"&coord="+coord.faceCoord}/>
+                            )
+                        }
+                    })
+
+                    }
+                    { props.datas.length -3 !== 0 &&
+                    <ImageView type="more-img" imgNum={props.datas.length-3}/>
+                    }
                 </Row>
                 <div className="not-wearing-mask-detection-footer">
                     <Row >

@@ -36,7 +36,7 @@ function DashboardMiniCards(props){
                     <MiniCard  label="Total With Mask" value={props.totalWithMask} icon="/img/icons8-protection-mask-128.svg" iconUnit="/img/icons8-person-64.svg"/> 
                 </Col>
                 <Col xl="6">
-                    <MiniCard label="Total Without Mask" value={props.totalWithoutMask} icon="/img/icons8-protection-mask-128.svg" iconUnit="/img/icons8-person-64.svg"/> 
+                    <MiniCard notMasked={true}label="Total Without Mask" value={props.totalWithoutMask} icon="/img/Group 22.jpg" iconUnit="/img/icons8-person-64.svg"/> 
                 </Col>
             </Row>
         </Col>
@@ -148,6 +148,7 @@ function MainDashBoard() {
                             label_A={"Floor "+record.floorNumber}
                             value_A={record.locationNameEn}
                             icon="/img/icons8-protection-mask-128.svg" 
+                            iconNon="/img/Group 22.jpg"
                             iconUnit="/img/icons8-person-64.svg"
                             label_B="Total With Mask" 
                             value_B={record.withMask} 

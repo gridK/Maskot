@@ -79,7 +79,9 @@ function HeatMap(props) {
                                                 <img src="/img/visibility-white.svg" className="heat-map-inner-box-overlay-icon" alt="see"></img>
                                             </NavLink>
                                             :
-                                            <div class="heat-map-inner-box" style={{backgroundColor:'#F5f4f2'}} >
+                                            <div className="heat-map-box ">
+                                                <div class="heat-map-inner-box" style={{backgroundColor:'#F5f4f2'}} >
+                                                </div>
                                             </div>
                                         }
                                     </>

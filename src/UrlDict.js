@@ -28,6 +28,8 @@ function GetInspectionRecordInfo(params) {
     switch (params.type){
         case "main":
             return axios.get(baseUrl+`/dashboard/histories-dates?startDate=${params.data.date}&page=${params.data.page}&pageSize=${params.data.pageSize}`)
+        case "get-filter":
+            return axios.get(baseUrl+`/dashboard/month-year-filters`)
         default:
             return ("params type mismatch.");
     }
@@ -70,7 +72,7 @@ function GetTimeLineInfo(params) {
             //       },
             //     data:params.data.image
             // })
-            return axios.post(baseUrl+`/dashboard/timelines`,params.data.image,{
+            return axios.post(baseUrl+`/dashboard/timelines/?date=${params.data.date}`,params.data.image,{
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }

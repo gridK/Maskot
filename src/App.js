@@ -52,7 +52,7 @@ function App({routes}){
                     <Route path="/timeline/report/:date">
                         <TimeLine />
                     </Route>
-                    <Route path="/main/timeline/report">
+                    <Route path="/main/timeline/report/:date/:page">
                         <TimeLine />
                     </Route>
                     <Route path="/setting">
