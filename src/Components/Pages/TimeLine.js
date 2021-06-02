@@ -8,7 +8,7 @@ import HeaderView from '../Utilities/HeaderView';
 import TimeSlotCard, {TimelineDetailCard, TimelineWithoutMaskDetection} from '../Utilities/TimeSlotCard';
 import ImageView from '../Utilities/ImageView';
 import CarouselControl from '../Utilities/CarouselControl';
-import {DateTimeToFullString} from '../../Provider';
+import {DateTimeToFullString, DateTimeToFullStringRearrage} from '../../Provider';
 import {GetTimeLineInfo} from '../../UrlDict';
 import fs from 'fs'
 import {
@@ -24,7 +24,8 @@ function TimeLine (){
     var rearrange_day = currentday[2] +"-" + currentday[1] +"-"+ currentday[0]
     var new_date = new Date(rearrange_day)
     
-    var new_date_string = DateTimeToFullString(new_date)
+    var new_date_string = DateTimeToFullStringRearrage(new_date)
+    console.log(rearrange_day)
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
