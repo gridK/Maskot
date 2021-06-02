@@ -20,15 +20,26 @@ function ImageView(props) {
         )
        
     }
+    function pad(number, length) {
+   
+        var str = '' + number;
+        while (str.length < length) {
+            str = '0' + str;
+        }
+       
+        return str;
+    
+    }
     if (props.date != undefined) {
         var new_date = props.date.replaceAll(" ","-");
-        var  months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        var month_num = months.indexOf(new_date.split("-")[1])
-        if (month_num > 9) {
-            var result_date = new_date.split("-")[0] +"-"+month_num+"-"+new_date.split("-")[2]
-        }else{
-            result_date = new_date.split("-")[0] +"-0"+month_num+"-"+new_date.split("-")[2]
-        }
+        console.log(new_date)
+        var  months = ["Jan", "Feb", "March", "Apr", "May", "Jun", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        var month_num = months.indexOf(new_date.split("-")[1])+1
+        // if (month_num > 9) {
+        var result_date = pad(new_date.split("-")[0],2) +"-"+ pad(month_num,2)+"-"+new_date.split("-")[2]
+        // }else{
+        //     result_date = new_date.split("-")[0] +"-0"+month_num+"-"+new_date.split("-")[2]
+        // }
         
         console.log(result_date)
     }

@@ -83,7 +83,7 @@ function DetectionResultCard(props){
                     })
 
                     }
-                    { props.datas.length -3 !== 0 &&
+                    { props.datas.length -3 > 0 &&
                     <ImageView type="more-img" imgNum={props.datas.length-3}/>
                     }
                 </Row>

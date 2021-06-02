@@ -69,7 +69,7 @@ function TimelineDetailCard(props){
                 <Col >
                     <Row noGutters={true}>
                         <div className="mini-card-icon-background"></div>
-                        <img src="/img/icons8-protection-mask-128.svg" alt="mask"className="mini-card-icon"></img>
+                        <img src="/img/Group 22@2x.png" alt="mask" className="mini-card-icon"></img>
                         <div className="mini-timeline-card-text ">
                             <p>Total Without Mask</p>
                             <Row className="mini-card-value-text" noGutters="true">
