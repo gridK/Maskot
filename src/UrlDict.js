@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-const baseUrl = "https://maskot-dev.azurewebsites.net/api/v1";
+const baseUrl = "https://maskot-devs.azurewebsites.net/api/v1";
 
 const exampleParams = {
     type: "main",

@@ -54,8 +54,8 @@ function MainDashBoard() {
         totalPage: 1,
         totalItem: 1,
     });
-    var startDate = "16/05/2021";
-    var endDate = "26/05/2021";
+    var startDate = "21/05/2021";
+    var endDate = "03/06/2021";
     const fetchlocationinspection = (pagenum) => {
         var currentDate = new Date()
         let params = {
