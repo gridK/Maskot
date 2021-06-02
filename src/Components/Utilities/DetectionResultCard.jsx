@@ -61,7 +61,7 @@ function DetectionResultCardV1(props) {
 // }
 
 function DetectionResultCard(props){
-    var baseUrl = 'https://e3dba7e0be57.ap.ngrok.io'
+    var baseUrl = 'https://2ad74237b474.ngrok.io'
     console.log(props)
     return(
         props.imageUrl ?
