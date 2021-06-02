@@ -91,7 +91,7 @@ function TimelineDetailCard(props){
 
 
 function TimelineWithoutMaskDetection(props){
-    var baseUrl = 'https://e3dba7e0be57.ap.ngrok.io'
+    var baseUrl = 'https://2ad74237b474.ngrok.io'
     var imageUrl = props.withOutMaskFaceCoord.images[props.currentNum-1].imageUrl
     return (
         <div className="timeline-without-mask-detection">
